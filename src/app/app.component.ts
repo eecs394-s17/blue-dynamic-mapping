@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { HomePage } from '../pages/home/home';
+import { PromptPage } from '../pages/prompt-page/prompt-page';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -16,7 +17,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HomePage;
+  rootPage = PromptPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(
@@ -30,7 +31,7 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Home Page', component: HomePage }
+      { title: 'Home Page', component: PromptPage }
     ];
   }
 
