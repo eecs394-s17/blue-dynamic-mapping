@@ -1,0 +1,13 @@
+Meaningful Naming of Files (Makes it Hard to Navigate otherwise)  
+CamelCase on Functions + Delete Old Functions when it's been rewritten 
+Get Rid of Console Logs
+Variable Names -> Underscore
+Use Providers instead of Services 
+Don't have any code that's redundant (Refactoring 5/10 Min every sprint)
+Use Fat Arrow Syntax for Callbacks
+Adding Separate Column to Trello for any Bugs Observed
+Encapsulating Data / All Logic of Front End
+Code should be properly tabulated / spaced
+ 
+
+
