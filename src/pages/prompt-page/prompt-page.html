@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Home Page</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>{{prompt.question}}</h3>
+ <!--  <button *ngFor="let r of prompt.responses" ion-button ng-model="button" (click)="responseSelected($event, r); button.clicked != button.clicked" outline [round]="clicked? true : false">{{r}}</button> -->
+ <button ion-button outline ng-model="button" ng-click="button.clicked=!button.clicked" ng-class="button.clicked?'Selected':'Unselected'">     
+    </button>
+</ion-content>

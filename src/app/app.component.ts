@@ -3,7 +3,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { promptsRootPage } from '../pages/promptsRoot/promptsRoot';
-
+import { HomePage } from '../pages/home/home';
+import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -28,7 +29,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Home Page', component: promptsRootPage }
+      { title: 'Home Page', component: promptsRootPage },
+      { title: 'Home Page', component: PromptPage }
     ];
   }
 
