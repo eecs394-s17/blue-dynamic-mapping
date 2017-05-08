@@ -10,6 +10,7 @@ import { PromptPage } from '../prompt-page/prompt-page';
   templateUrl: 'prompts-root-page.html',
   providers: [PromptService]
 })
+
 export class PromptsRootPage {
   prompts: Prompt[];
   responses: any;
@@ -36,22 +37,11 @@ export class PromptsRootPage {
   displayNextPrompt() {
     console.log("displaying prompt #", this.current_prompt_index);
 
-    let callback = (responses, forward) => {
-      this.responses[this.current_prompt_index] = responses;
-      if (forward) {
-        this.current_prompt_index++;
-        this.displayNextPrompt();
-      } else {
-        this.current_prompt_index--;
-        this.displayPrevPrompt();
-      }
-    }
-
     this.navCtrl.push(PromptPage, {
       prompt: this.prompts[this.current_prompt_index],
       first: this.current_prompt_index == 0,
       last: this.current_prompt_index == this.prompts.length - 1,
-      callback: callback
+      callback: this.promptCallback
     });
   }
 
@@ -59,4 +49,18 @@ export class PromptsRootPage {
     this.navCtrl.pop();
     console.log("displaying prompt #", this.current_prompt_index);
   }
+
+  promptCallback = (responses, forward) => {
+      this.responses[this.current_prompt_index] = responses;
+      if (forward && this.current_prompt_index < this.prompts.length - 1) {
+        this.current_prompt_index++;
+        this.displayNextPrompt();
+      } else if (!forward) {
+        this.current_prompt_index--;
+        this.displayPrevPrompt();
+      } else {
+        console.log(this.prompts, this.responses);
+        this.navCtrl.popToRoot();
+      }
+    }
 }  
