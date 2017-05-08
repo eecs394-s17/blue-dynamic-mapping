@@ -3,13 +3,19 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home Page</ion-title>
-  </ion-navbar>
+  </ion-navbar >
 </ion-header>
 
 <ion-content padding>
   <h3>{{prompt.question}}</h3>
- <!--  <button *ngFor="let r of prompt.responses" ion-button ng-model="button" (click)="responseSelected($event, r); button.clicked != button.clicked" outline [round]="clicked? true : false">{{r}}</button> -->
- <button ion-button outline ng-model="button" ng-click="button.clicked=!button.clicked" ng-class="button.clicked?'Selected':'Unselected'">     
-    </button>
+  <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected"></response-button>
+  <ion-row>
+  	<ion-col align-self-start>
+  		<button *ngIf="can_go_back" ion-button (click)="backAction($event)">Back</button>
+  	</ion-col>
+  	<ion-col col-5></ion-col>
+  	<ion-col align-self-end>
+  		<button *ngIf="can_go_next" ion-button (click)="nextAction($event)">{{nextText()}}</button>
+  	</ion-col>
+  </ion-row>
 </ion-content>

@@ -4,17 +4,20 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 
-import { promptsRootPage } from '../pages/promptsRoot/promptsRoot';
+import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
 import { HomePage } from '../pages/home/home';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { ResponseButton } from '../components/response-button/response-button';
+
 @NgModule({
   declarations: [
     MyApp,
-    promptsRootPage,
-    PromptPage
+    PromptsRootPage,
+    PromptPage,
+    ResponseButton
   ],
   imports: [
     BrowserModule,
@@ -23,8 +26,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    promptsRootPage,
-    PromptPage
+    PromptsRootPage,
+    PromptPage,
+    ResponseButton
   ],
   providers: [
     StatusBar,
