@@ -9,6 +9,14 @@ import { PROMPTS } from '../mock-prompts'
 export class PromptService {
 
   getUserPrompts(): Promise<Prompt[]> {
-    return Promise.resolve(PROMPTS);
+    return Promise.resolve(PROMPTS.map(this.parsePrompt));
+  }
+
+  parsePrompt(data): Prompt {
+  	let p = new Prompt();
+  	p.question = data.question;
+  	p.responses = data.responses;
+  	p.max_choices = data.max_choices;
+  	return p;
   }
 }

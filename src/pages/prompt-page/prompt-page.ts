@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NavController, NavParams, ViewController} from 'ionic-angular';
 
 import { Prompt } from '../../models/prompt';
 
@@ -10,29 +11,46 @@ import { Prompt } from '../../models/prompt';
 
 export class PromptPage {
 	prompt: Prompt;
+	selected_responses: Set<string>;
+	can_go_back: boolean;
+	can_go_next: boolean;
+	first: boolean;
+	last: boolean;
+	callback: (responses: Set<string>, forward: boolean) => void;
 
-  	constructor() {
-  		let p = new Prompt();
-  		p.question = "Aha suh Aki?"
-  		p.responses = ["NM u?", "jchillen", "same as stan", "Totony", "Seb Inc.", "Stan Was here", "gud", "gr8 m8 thx 4 askin"];
-  		p.max_choices = 5;
-
-  		this.prompt = p;
+  	constructor(private navController: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
+  		this.selected_responses = new Set();
+  		this.callback = navParams.get('callback');
+  		this.prompt = navParams.get('prompt');
+  		this.first = navParams.get('first');
+  		this.last = navParams.get('last');
+  		this.can_go_back = !this.first;
+  		this.can_go_next = true;
   	}
 
-  	responseSelected(event, response) {
-  		event.target.clicked != event.target.clicked;
-  		console.log(event.target);
-  		console.log("selected " + response);
+  	ionViewWillEnter() {
+  		this.viewCtrl.showBackButton(!this.can_go_back);
   	}
-}
 
-class Selected {
-	color: string = 'blue';
-	outline: boolean = false;
-}
+  	nextText() {
+  		return this.last ? 'Finish' : 'Next';
+  	}
 
-class Unselected {
-	color: string = 'red';
-	outline: boolean = true;
-}
+  	responseSelected = (response, selected) => {
+  		if (selected) {
+  			this.selected_responses.add(response);
+  			
+  		} else {
+  			this.selected_responses.delete(response);
+  		}
+  	}
+
+
+  	backAction(event) {
+  		this.callback(this.selected_responses, false);
+  	}
+
+  	nextAction(event) {
+  		this.callback(this.selected_responses, true);
+  	}
+  }
