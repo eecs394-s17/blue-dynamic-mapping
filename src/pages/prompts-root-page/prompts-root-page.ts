@@ -23,10 +23,15 @@ export class PromptsRootPage {
   }
 
   load() {
-    this.promptService.getUserPrompts().then((prompts: Prompt[]) => {
-      console.log(prompts);
+    // this.promptService.getUserPrompts().then((prompts: Prompt[]) => {
+    //   console.log(prompts);
+    //   this.setPrompts(prompts);
+    // });
+
+    this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
+      // console.log('prompts root ' + prompts);
       this.setPrompts(prompts);
-    });
+    })
   }
 
   setPrompts(prompts) {

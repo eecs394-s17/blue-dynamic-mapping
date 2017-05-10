@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
 import * as firebase from 'firebase';
 
 
@@ -25,7 +26,8 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen
-  ) {
+  ) 
+  {
  
     this.initializeApp();
 
