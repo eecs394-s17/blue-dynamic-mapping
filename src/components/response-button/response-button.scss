@@ -8,4 +8,13 @@ response-button{
         padding: 0 0.5em !important;
         height: 10%;
     }
+    .rButton-selected{
+        border-radius: 10px; 
+        min-width: 30%; 
+        background-color: #FFFFFF; 
+        color: #4990E2; 
+        font-size: 1.5em;
+        padding: 0 0.5em !important;
+        height: 10%;
+    }
 }
