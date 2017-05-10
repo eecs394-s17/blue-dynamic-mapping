@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { Prompt } from '../models/prompt';
+import { ConfirmedResponses } from '../models/confirmed-response';
 import { PROMPTS } from '../mock-prompts'
 
 @Injectable()
@@ -19,4 +20,5 @@ export class PromptService {
   	p.max_choices = data.max_choices;
   	return p;
   }
+
 }

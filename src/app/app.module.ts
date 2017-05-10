@@ -5,8 +5,9 @@ import { MyApp } from './app.component';
 
 
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
-import { HomePage } from '../pages/home/home';
+import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
+import { SummaryPage } from '../pages/summary-page/summary-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -15,8 +16,10 @@ import { ResponseButton } from '../components/response-button/response-button';
 @NgModule({
   declarations: [
     MyApp,
+    HomePage,
     PromptsRootPage,
     PromptPage,
+    SummaryPage,
     ResponseButton
   ],
   imports: [
@@ -26,8 +29,10 @@ import { ResponseButton } from '../components/response-button/response-button';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     PromptsRootPage,
     PromptPage,
+    SummaryPage,
     ResponseButton
   ],
   providers: [

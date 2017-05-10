@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Summary Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3 *ngFor="let p of prompts; let i = index"> {{p.question}}  <h6> {{responses_list[i]}} </h6>
+  </h3>
+
+  <button ion-button (click)="returnHome($event)"> Return Home </button>
+  
+
+</ion-content>

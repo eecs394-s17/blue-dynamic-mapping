@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { PromptService } from '../../providers/prompt-service';
 import { Prompt } from '../../models/prompt';
 import { PromptPage } from '../prompt-page/prompt-page';
+import { SummaryPage } from '../summary-page/summary-page';
 
 @Component({
   selector: 'prompts-root-page',
@@ -55,12 +56,19 @@ export class PromptsRootPage {
       if (forward && this.current_prompt_index < this.prompts.length - 1) {
         this.current_prompt_index++;
         this.displayNextPrompt();
-      } else if (!forward) {
+      } 
+      else if (!forward) {
         this.current_prompt_index--;
         this.displayPrevPrompt();
-      } else {
-        console.log(this.prompts, this.responses);
-        this.navCtrl.popToRoot();
+      } 
+      else {
+        console.log('PROMPTS/RESPONSES root ');
+        console.log(this.responses);
+
+        this.navCtrl.push(SummaryPage, {
+          prompts: this.prompts, 
+          responses: this.responses
+        });
       }
     }
 }  
