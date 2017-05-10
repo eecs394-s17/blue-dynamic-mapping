@@ -6,16 +6,18 @@
   </ion-navbar >
 </ion-header>
 
-<ion-content padding>
-  <h3>{{prompt.question}}</h3>
-  <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected"></response-button>
-  <ion-row>
-  	<ion-col align-self-start>
-  		<button *ngIf="can_go_back" ion-button (click)="backAction($event)">Back</button>
-  	</ion-col>
-  	<ion-col col-5></ion-col>
-  	<ion-col align-self-end>
-  		<button *ngIf="can_go_next" ion-button (click)="nextAction($event)">{{nextText()}}</button>
-  	</ion-col>
-  </ion-row>
+<ion-content padding style="background-color: #4990E2">
+  <h3 style="color: white">{{prompt.question}}</h3>
+  <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-left ></response-button>
+  <ion-footer style="background-color: #FFFFFF">
+
+    <ion-toolbar>
+      <ion-buttons start>
+  		  <button style="font-size = 1.5em" *ngIf="can_go_back" clear ion-button (click)="backAction($event)">Back</button>
+      </ion-buttons>
+      <ion-buttons end>
+  		  <button style="font-size = 1.5em" *ngIf="can_go_next" clear ion-button (click)="nextAction($event)">{{nextText()}}</button>
+      </ion-buttons>
+   </ion-toolbar>
+  </ion-footer>
 </ion-content>
