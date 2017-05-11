@@ -1,25 +1,42 @@
 <ion-header>
-  <ion-navbar> 
+  <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title> Dynamic Mapping </ion-title>
   </ion-navbar >
 </ion-header>
+<ion-content class="tutorial-page">
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
 
-
-<ion-content padding>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+      <br>
   
-  <p> Dynamic mapping and integration is a form of couples counseling in which couples create a map of their relationship dynamic as a tool to identify, heal and improve problem areas of the relationship. The map includes elements from each person’s family of origin, communication styles, conflict areas and reactions, strength, vulnerabilities and goals. Couples collaboratively and compassionately integrate new awarenesses, tools and healthy new pathways to create a happier and peaceful relationship.
+    </ion-slide>
+    <ion-slide>
+      <ion-toolbar>
+      </ion-toolbar>
+      <!-- <img [src]="slide.image" class="slide-image"/> -->
+      <h2 class="slide-title">Ready to Start?</h2>
+      <button ion-button large clear icon-right color="primary" (click)="pushTrackArgument($event)">
+        Track Argument
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-slide>
+  </ion-slides>
+
+
+  <!-- <p> Dynamic mapping and integration is a form of couples counseling in which couples create a map of their relationship dynamic as a tool to identify, heal and improve problem areas of the relationship. The map includes elements from each person’s family of origin, communication styles, conflict areas and reactions, strength, vulnerabilities and goals. Couples collaboratively and compassionately integrate new awarenesses, tools and healthy new pathways to create a happier and peaceful relationship.
  </p>
-  
+
   <ion-row>
     <ion-col align-self-end>
       <button ion-button (click)="pushTrackArgument($event)"> Track Argument </button>
     </ion-col>
-<!--     <ion-col align-self-start>
+    <ion-col align-self-start>
       <button ion-button (click)="pushSummary($event)"> See Most Recent Mapping</button>
-    </ion-col> -->
-  </ion-row>
+    </ion-col>
+  </ion-row> -->
 </ion-content>
-

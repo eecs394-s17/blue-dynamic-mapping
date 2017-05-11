@@ -11,7 +11,16 @@ import { StorageService } from '../../providers/storage-service';
   providers: [StorageService]
 })
 export class HomePage {
-	
+  slides = [
+    {
+      title: "Welcome to the Dynamic Mapping!",
+      description: "Dynamic mapping and integration is a form of couples counseling in which couples create a map of their relationship dynamic as a tool to identify, heal and improve problem areas of the relationship. The map includes elements from each person’s family of origin, communication styles, conflict areas and reactions, strength, vulnerabilities and goals. Couples collaboratively and compassionately integrate new awarenesses, tools and healthy new pathways to create a happier and peaceful relationship.",
+      // image: "assets/img/ica-slidebox-img-3.png",
+
+    },
+
+  ];
+
   constructor(public navCtrl: NavController, private storageService: StorageService) {
 
   }
@@ -20,7 +29,7 @@ export class HomePage {
   //   this.storageService.getMostRecentReponse().then((data) => {
   //     console.log(data);
   //     this.navCtrl.push(SummaryPage, {
-  //         prompts: data.getItem('prompts'), 
+  //         prompts: data.getItem('prompts'),
   //         responses: data.getItem('responses')
   //       });
   //   });
