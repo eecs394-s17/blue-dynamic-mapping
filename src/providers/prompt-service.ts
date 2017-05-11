@@ -41,8 +41,16 @@ export class PromptService {
     p.max_choices = data.max_choices;
     p.responses = data.responses;
     return p;
-   
   }
+
+  postArgumentTracking(response){
+    firebase.database().ref('/Users/').child('1').child('1').set({
+      responses: response
+    });
+  }
+
+  
+
 
 
 
