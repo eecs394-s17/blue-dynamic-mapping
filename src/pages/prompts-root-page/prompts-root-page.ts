@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { PromptService } from '../../providers/prompt-service';
+import { StorageService } from '../../providers/storage-service';
+
 import { Prompt } from '../../models/prompt';
 import { PromptPage } from '../prompt-page/prompt-page';
 import { SummaryPage } from '../summary-page/summary-page';
@@ -9,7 +11,7 @@ import { SummaryPage } from '../summary-page/summary-page';
 @Component({
   selector: 'prompts-root-page',
   templateUrl: 'prompts-root-page.html',
-  providers: [PromptService]
+  providers: [PromptService, StorageService]
 })
 
 export class PromptsRootPage {
@@ -17,7 +19,7 @@ export class PromptsRootPage {
   responses: any;
   current_prompt_index: number;
 
-  constructor(public navCtrl: NavController, private promptService: PromptService) {
+  constructor(public navCtrl: NavController, private promptService: PromptService, private storageService: StorageService) {
     this.load();  
     this.responses = {};
   }
@@ -56,6 +58,13 @@ export class PromptsRootPage {
         this.current_prompt_index--;
         this.displayPrevPrompt();
       } else {
+        this.storageService.saveMostRecentResponse(this.prompts, this.responses).then((res) => {
+          console.log(res);
+          this.storageService.getMostRecentReponse().then((res) => {
+            console.log(res);
+          });
+        });
+
         this.navCtrl.push(SummaryPage, {
           prompts: this.prompts, 
           responses: this.responses
