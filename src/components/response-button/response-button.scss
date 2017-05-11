@@ -1,18 +1,20 @@
 response-button{
 	.rButton{
-        border-radius: 10px; 
-        min-width: 30%; 
-        background-color: #A4C9F6; 
-        color: #4990E2; 
+        border-radius: 10px;
+        min-width: 47%;
+        background-color: #A4C9F6;
+        color: #4990E2;
         font-size: 1 em;
         padding: 0 0.5em !important;
+       // font: 'Helvetica Neue';
     }
     .rButton-selected{
-        border-radius: 10px; 
-        min-width: 30%; 
-        background-color: #FFFFFF; 
-        color: #4990E2; 
+        border-radius: 10px;
+        min-width: 47%; 
+        background-color: #FFFFFF;
+        color: #4990E2;
         font-size: 1 em;
         padding: 0 0.5em !important;
+        //font: 'Helvetica Neue';
     }
 }

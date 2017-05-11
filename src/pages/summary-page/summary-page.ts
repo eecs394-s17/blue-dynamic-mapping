@@ -53,6 +53,9 @@ export class SummaryPage {
       temp_list[i] = Array.from((this.received_responses[i]).values())
     }
 
+    console.log(temp_list);
+    console.log(this.received_responses);
+
     this.responses_list = temp_list;
 
   }
