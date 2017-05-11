@@ -24,8 +24,8 @@ export class SummaryPage {
 
     this.prompts = this.navParams.get('prompts');
     this.received_responses = this.navParams.get('responses');
-
     this.load();  
+
   }
 
   load() {
@@ -35,6 +35,8 @@ export class SummaryPage {
     });
 
     this.getUserResponses();
+
+    this.promptService.postArgumentTracking(this.responses_list);
 
   }
 
@@ -50,6 +52,9 @@ export class SummaryPage {
     for (var i = 0; i < totalLength; i++){
       temp_list[i] = Array.from((this.received_responses[i]).values())
     }
+
+    console.log(temp_list);
+    console.log(this.received_responses);
 
     this.responses_list = temp_list;
 
