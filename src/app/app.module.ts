@@ -3,6 +3,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
+import { IonicStorageModule } from '@ionic/storage';
 
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
 import { HomePage } from '../pages/home-page/home-page';
@@ -23,6 +24,7 @@ import { ResponseButton } from '../components/response-button/response-button';
     ResponseButton
   ],
   imports: [
+    IonicStorageModule.forRoot(),
     BrowserModule,
     IonicModule.forRoot(MyApp),
   ],
