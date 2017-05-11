@@ -16,14 +16,14 @@ export class SummaryPage {
   prompts: Prompt[];
   responses_list = [];
 
-  recvd_responses: any;
+  received_responses: any;
   current_prompt_index: number;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService) {
-    this.recvd_responses = {};
+    this.received_responses = {};
 
     this.prompts = this.navParams.get('prompts');
-    this.recvd_responses = this.navParams.get('responses');
+    this.received_responses = this.navParams.get('responses');
 
     this.load();  
   }
@@ -45,10 +45,10 @@ export class SummaryPage {
   }
 
   getUserResponses(){
-    var totalLength = Object.keys(this.recvd_responses).length;
+    var totalLength = Object.keys(this.received_responses).length;
     let temp_list = []
     for (var i = 0; i < totalLength; i++){
-      temp_list[i] = Array.from((this.recvd_responses[i]).values())
+      temp_list[i] = Array.from((this.received_responses[i]).values())
     }
 
     this.responses_list = temp_list;

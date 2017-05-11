@@ -23,15 +23,9 @@ export class PromptsRootPage {
   }
 
   load() {
-    // this.promptService.getUserPrompts().then((prompts: Prompt[]) => {
-    //   console.log(prompts);
-    //   this.setPrompts(prompts);
-    // });
-
     this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
-      // console.log('prompts root ' + prompts);
       this.setPrompts(prompts);
-    })
+    });
   }
 
   setPrompts(prompts) {
@@ -41,8 +35,6 @@ export class PromptsRootPage {
   }
 
   displayNextPrompt() {
-    console.log("displaying prompt #", this.current_prompt_index);
-
     this.navCtrl.push(PromptPage, {
       prompt: this.prompts[this.current_prompt_index],
       first: this.current_prompt_index == 0,
@@ -53,7 +45,6 @@ export class PromptsRootPage {
 
   displayPrevPrompt() {
     this.navCtrl.pop();
-    console.log("displaying prompt #", this.current_prompt_index);
   }
 
   promptCallback = (responses, forward) => {
@@ -61,15 +52,10 @@ export class PromptsRootPage {
       if (forward && this.current_prompt_index < this.prompts.length - 1) {
         this.current_prompt_index++;
         this.displayNextPrompt();
-      } 
-      else if (!forward) {
+      } else if (!forward) {
         this.current_prompt_index--;
         this.displayPrevPrompt();
-      } 
-      else {
-        console.log('PROMPTS/RESPONSES root ');
-        console.log(this.responses);
-
+      } else {
         this.navCtrl.push(SummaryPage, {
           prompts: this.prompts, 
           responses: this.responses

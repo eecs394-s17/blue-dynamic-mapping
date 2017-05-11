@@ -10,8 +10,6 @@ import { FIREBASE_CONFIG } from "../../APP_SECRETS";
 firebase.initializeApp(FIREBASE_CONFIG);
 
 @Injectable()
-
-
 export class PromptService {
 
 
