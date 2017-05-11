@@ -13,12 +13,14 @@
   <ion-footer style="background-color: #FFFFFF">
 
     <ion-toolbar>
-      <ion-buttons start>
+      <ion-buttons left>
   		  <button ion-button style="font-size = 1.5em" *ngIf="can_go_back" clear ion-button (click)="backAction($event)">Back</button>
       </ion-buttons>
-      <ion-buttons end>
+      <div>
+      <ion-buttons right>
   		  <button ion-button style="font-size = 1.5em" *ngIf="can_go_next" clear ion-button (click)="nextAction($event)">{{nextText()}}</button>
       </ion-buttons>
+    </div>
    </ion-toolbar>
   </ion-footer>
 </ion-content>
