@@ -8,11 +8,23 @@
 </ion-header>
 
 
-<ion-content padding>
-  <h3 *ngFor="let p of prompts; let i = index"> {{p.question}}  <h6> {{responses_list[i]}} </h6>
+<ion-content padding style="background-color: #4990E2">
+  <h3  style="color: white; margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of prompts; let i = index"> {{p.question}}
+    <br />
+      <h6 class="borderexample" *ngFor="let op of responses_list[i]; let j = index"> {{op}} </h6>
+    
   </h3>
 
-  <button ion-button (click)="returnHome($event)">Complete Argument Tracking</button>
   
-
+  
+ 
 </ion-content>
+
+ <ion-footer style="background-color: #FFFFFF">
+
+    <ion-toolbar>
+      <ion-buttons middle>
+        <button style="width: 100%; text-align: center;" ion-button (click)="returnHome($event)">Complete Argument Tracking</button>
+  		</ion-buttons>
+   </ion-toolbar>
+  </ion-footer>
