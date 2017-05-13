@@ -54,8 +54,6 @@ export class PromptService {
   }
 
   postArgumentTracking(response){
-    // var timeStamp = Math.floor(Date.now());
-    // console.log("current timeStamp: "+timeStamp);
     firebase.database().ref('/Users/').child('1').child('1').set({
       responses: response
     });
@@ -63,11 +61,7 @@ export class PromptService {
 
 
   recordResponse(time_stamp, question, response){
-    // console.log("getUserTimeStamps:"+this.getUserTimeStamps());
-    // var time_stamps = this.getUserTimeStamps();
-    // console.log(time_stamps);
-    // console.log("time_stamps: "+time_stamps.indexOf(1494705326902));
-    // this.getUserTimeStamps();
+
     var database = firebase.database();
     this.getUserTimeStamps().then((time_stamps)=>{
       console.log(time_stamps);

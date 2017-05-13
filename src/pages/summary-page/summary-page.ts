@@ -27,8 +27,6 @@ export class SummaryPage {
     this.received_responses = this.navParams.get('responses');
     this.time_stamp = this.navParams.get('time_stamp');
     this.load();
-    // console.log("prompts:"+this.prompts.length);
-    // console.log("responses_list:"+this.responses_list.length);
     for(var i=0;i<this.prompts.length;i++){
       // console.log("question:"+this.prompts[i].question);
       for(var j=0;j<this.responses_list[i].length;j++){
@@ -48,8 +46,7 @@ export class SummaryPage {
     this.getUserResponses();
 
     this.promptService.postArgumentTracking(this.responses_list);
-    // console.log("summary-page time:"+this.time_stamp);
-    // console.log("summary prompts:"+this.prompts);
+
 
 
   }
@@ -57,7 +54,6 @@ export class SummaryPage {
   setPrompts(prompts) {
     this.prompts = prompts;
     this.current_prompt_index = 0;
-    // console.log(this.prompts);
   }
 
   getUserResponses(){
@@ -66,17 +62,11 @@ export class SummaryPage {
     for (var i = 0; i < totalLength; i++){
       temp_list[i] = Array.from((this.received_responses[i]).values())
     }
-
-    // console.log("getUserResponses:"+temp_list);
-    // console.log("getUserResponses:"+this.received_responses);
-
     this.responses_list = temp_list;
 
   }
 
-  // recordQuestionsResponses(){
-  //   for(var i=0; i < )
-  // }
+
 
   returnHome(){
     this.navCtrl.setRoot(HomePage);

@@ -44,8 +44,6 @@ export class PromptPage {
   		if (selected) {
   			this.selected_responses.add(response);
         console.log("select reponse:"+this.time_stamp+" "+response);
-        // this.promptService.recordResponse(this.time_stamp, this.prompt.question, response);
-
 
   		} else {
   			this.selected_responses.delete(response);
