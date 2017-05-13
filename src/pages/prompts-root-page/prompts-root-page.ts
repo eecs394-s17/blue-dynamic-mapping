@@ -7,6 +7,7 @@ import { StorageService } from '../../providers/storage-service';
 import { Prompt } from '../../models/prompt';
 import { PromptPage } from '../prompt-page/prompt-page';
 import { SummaryPage } from '../summary-page/summary-page';
+import { MantraPage } from '../mantra-page/mantra-page';
 
 @Component({
   selector: 'prompts-root-page',
@@ -65,7 +66,7 @@ export class PromptsRootPage {
           });
         });
 
-        this.navCtrl.push(SummaryPage, {
+        this.navCtrl.push(MantraPage, {
           prompts: this.prompts, 
           responses: this.responses
         });

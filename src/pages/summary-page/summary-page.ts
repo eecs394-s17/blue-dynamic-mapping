@@ -18,12 +18,14 @@ export class SummaryPage {
 
   received_responses: any;
   current_prompt_index: number;
+  mantra: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService) {
     this.received_responses = {};
 
     this.prompts = this.navParams.get('prompts');
     this.received_responses = this.navParams.get('responses');
+    this.mantra = this.navParams.get('mantra');
     this.load();  
 
   }
