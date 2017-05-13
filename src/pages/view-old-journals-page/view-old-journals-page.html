@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Old Journals Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding> 
+
+<ion-list> 
+  <ion-item> 
+    <ion-label> {{ getMonth() }} {{ getDay() }} at {{ getTime() }}  </ion-label>
+    <strong> {{ subject }} </strong> <br>
+  </ion-item>
+</ion-list>
+
+{{ thoughts }}
+
+
+
+</ion-content>

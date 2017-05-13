@@ -11,47 +11,40 @@ export class StorageService {
 
   }
 
-  saveMostRecentJournalEntry(subject, thoughts){
+  saveMostRecentJournalEntry(date, subject, thoughts){
+
+    // var obj = JSON.parse( localStorage.getItem('obj') ) || {};
     console.log('saving journal');
+
     return this.storage.ready().then(() => {
-      return this.storage.set('subject', subject).then((res) => {
+      return this.storage.set('timestamp', date).then((res) => {
         console.log(res);
-        return this.storage.set('thoughts', thoughts).then((res) => {
+        return this.storage.set('subject', subject).then((res) => {
           console.log(res);
-          return true;
+          return this.storage.set('thoughts', thoughts).then((res) => {
+            console.log(res);
+            return true;
+          })
         })
       })
     })
   }
 
-  // saveMostRecentResponse(prompts: Prompt[], responses: any) {
-  //   console.log('saving responses');
-  //   return this.storage.ready().then(() => {
-  //     return this.storage.set('prompts', prompts).then((res) => {
-  //       console.log(res);
-  //       return this.storage.set('responses', responses).then((res) => {
-  //         console.log(res);
-  //         return true;
-  //       });
-  //     });
-      
-      
-  //   });
-  // }
-
-  getMostRecentReponse() {
+  getMostRecentJournalEntry(){
     console.log('fetching responses');
     return this.storage.ready().then(() => {
-      return this.storage.get('prompts').then((prompts) => {
-        return this.storage.get('responses').then((responses) => {
-          return {
-            prompts: prompts,
-            responses: responses
-          };
+      return this.storage.get('timestamp').then((timestamp) => {
+        return this.storage.get('subject').then((subject) => {
+          return this.storage.get('thoughts').then((thoughts) => {
+            return {
+              timestamp: timestamp,
+              subject: subject,
+              thoughts: thoughts
+            };
+          });
         });
-      });
-    }); 
+      })
+    });
   }
-
 
 }

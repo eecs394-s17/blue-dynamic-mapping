@@ -8,6 +8,8 @@ import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JournalPage } from '../pages/journal-page/journal-page';
+import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
+
 
 import * as firebase from 'firebase';
 
@@ -35,7 +37,8 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Track Argument', component: PromptsRootPage }, 
-      { title: 'Journal', component: JournalPage}
+      { title: 'Journal', component: JournalPage},
+      { title: 'Old Journals', component: OldJournalsPage }
     ];
   }
 
