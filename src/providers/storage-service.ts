@@ -11,20 +11,33 @@ export class StorageService {
 
   }
 
-  saveMostRecentResponse(prompts: Prompt[], responses: any) {
-    console.log('saving responses');
+  saveMostRecentJournalEntry(subject, thoughts){
+    console.log('saving journal');
     return this.storage.ready().then(() => {
-      return this.storage.set('prompts', prompts).then((res) => {
+      return this.storage.set('subject', subject).then((res) => {
         console.log(res);
-        return this.storage.set('responses', responses).then((res) => {
+        return this.storage.set('thoughts', thoughts).then((res) => {
           console.log(res);
           return true;
-        });
-      });
-      
-      
-    });
+        })
+      })
+    })
   }
+
+  // saveMostRecentResponse(prompts: Prompt[], responses: any) {
+  //   console.log('saving responses');
+  //   return this.storage.ready().then(() => {
+  //     return this.storage.set('prompts', prompts).then((res) => {
+  //       console.log(res);
+  //       return this.storage.set('responses', responses).then((res) => {
+  //         console.log(res);
+  //         return true;
+  //       });
+  //     });
+      
+      
+  //   });
+  // }
 
   getMostRecentReponse() {
     console.log('fetching responses');

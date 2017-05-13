@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Journalling Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <form [formGroup]="journalForm" (submit)="storeJournal()">
+
+    <ion-list margin-top>
+
+      <ion-item margin-bottom>
+        <ion-input #subject formControlName="subject" type="subject" placeholder="Add a subject (optional)"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-textarea #thoughts formControlName="thoughts" rows="10" type="thoughts" placeholder="What's on your mind?"></ion-textarea>
+      </ion-item>
+
+      <!-- post -->
+      <button ion-item text-center detail-none color="primary" type="submit">
+        Save 
+      </button>
+
+    </ion-list>
+  </form>
+
+</ion-content>

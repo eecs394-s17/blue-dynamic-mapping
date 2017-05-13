@@ -11,6 +11,7 @@ import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { SummaryPage } from '../pages/summary-page/summary-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { JournalPage } from '../pages/journal-page/journal-page';
 
 import { ResponseButton } from '../components/response-button/response-button';
 
@@ -21,6 +22,7 @@ import { ResponseButton } from '../components/response-button/response-button';
     PromptsRootPage,
     PromptPage,
     SummaryPage,
+    JournalPage,
     ResponseButton
   ],
   imports: [
@@ -35,6 +37,7 @@ import { ResponseButton } from '../components/response-button/response-button';
     PromptsRootPage,
     PromptPage,
     SummaryPage,
+    JournalPage,
     ResponseButton
   ],
   providers: [
