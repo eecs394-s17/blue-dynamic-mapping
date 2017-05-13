@@ -24,6 +24,7 @@ export class MantraPage {
 	prompts: Prompt[];
   	responses_list = [];
 	responses: any;
+  time_stamp: any;
 
   	constructor(private navController: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
   		this.selected_responses = new Set();
@@ -34,6 +35,7 @@ export class MantraPage {
 
     	this.prompts = this.navParams.get('prompts');
     	this.responses = this.navParams.get('responses');
+      this.time_stamp = this.navParams.get('time_stamp');
   	}
 
   	ionViewWillEnter() {
@@ -56,11 +58,12 @@ export class MantraPage {
   	}
 
   	nextAction(event) {
-  		
+
 		 this.navController.push(SummaryPage, {
-          prompts: this.prompts, 
+          prompts: this.prompts,
           responses: this.responses,
-		  mantra: this.mantra
-        });  
+		  mantra: this.mantra,
+      time_stamp: this.time_stamp
+        });
   	}
   }

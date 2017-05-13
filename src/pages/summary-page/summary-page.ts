@@ -18,15 +18,24 @@ export class SummaryPage {
 
   received_responses: any;
   current_prompt_index: number;
-  mantra: string;
+  time_stamp: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService) {
     this.received_responses = {};
 
     this.prompts = this.navParams.get('prompts');
     this.received_responses = this.navParams.get('responses');
-    this.mantra = this.navParams.get('mantra');
-    this.load();  
+    this.time_stamp = this.navParams.get('time_stamp');
+    this.load();
+    // console.log("prompts:"+this.prompts.length);
+    // console.log("responses_list:"+this.responses_list.length);
+    for(var i=0;i<this.prompts.length;i++){
+      // console.log("question:"+this.prompts[i].question);
+      for(var j=0;j<this.responses_list[i].length;j++){
+        // console.log("response "+j+this.responses_list[i][j]);
+        this.promptService.recordResponse(this.time_stamp,this.prompts[i].question,this.responses_list[i][j]);
+      }
+    }
 
   }
 
@@ -39,13 +48,16 @@ export class SummaryPage {
     this.getUserResponses();
 
     this.promptService.postArgumentTracking(this.responses_list);
+    // console.log("summary-page time:"+this.time_stamp);
+    // console.log("summary prompts:"+this.prompts);
+
 
   }
 
   setPrompts(prompts) {
     this.prompts = prompts;
     this.current_prompt_index = 0;
-    console.log(this.prompts);
+    // console.log(this.prompts);
   }
 
   getUserResponses(){
@@ -55,16 +67,20 @@ export class SummaryPage {
       temp_list[i] = Array.from((this.received_responses[i]).values())
     }
 
-    console.log(temp_list);
-    console.log(this.received_responses);
+    // console.log("getUserResponses:"+temp_list);
+    // console.log("getUserResponses:"+this.received_responses);
 
     this.responses_list = temp_list;
 
   }
+
+  // recordQuestionsResponses(){
+  //   for(var i=0; i < )
+  // }
 
   returnHome(){
     this.navCtrl.setRoot(HomePage);
   }
 
 
-}  
+}

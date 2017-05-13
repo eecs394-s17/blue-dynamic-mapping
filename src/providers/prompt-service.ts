@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { Prompt } from '../models/prompt';
-import { ConfirmedResponses } from '../models/confirmed-response';
+// import { ConfirmedResponses } from '../models/confirmed-response';
 import { PROMPTS } from '../mock-prompts'
 
 import * as firebase from "firebase";
@@ -26,6 +26,7 @@ export class PromptService {
   }
 
   fetchPrompts(){
+
     let prompts = []
     return firebase.database().ref('/Prompts/').once('value').then((snapshot) => {
         var promptJSONS = snapshot.val();
@@ -33,6 +34,15 @@ export class PromptService {
         return prompts
   })
 
+  }
+
+  getUserTimeStamps(){
+    // let time_stamps = [];
+    return firebase.database().ref('/Users/1/').once('value').then((snapshot) => {
+        var time_stamps = snapshot.val();
+        // console.log("getUserTimeStamps:"+Object.keys(time_stamps));
+        return Object.keys(time_stamps);
+    })
   }
 
   JSONtoPrompt(data){
@@ -44,12 +54,41 @@ export class PromptService {
   }
 
   postArgumentTracking(response){
+    // var timeStamp = Math.floor(Date.now());
+    // console.log("current timeStamp: "+timeStamp);
     firebase.database().ref('/Users/').child('1').child('1').set({
       responses: response
     });
   }
 
-  
+
+  recordResponse(time_stamp, question, response){
+    // console.log("getUserTimeStamps:"+this.getUserTimeStamps());
+    // var time_stamps = this.getUserTimeStamps();
+    // console.log(time_stamps);
+    // console.log("time_stamps: "+time_stamps.indexOf(1494705326902));
+    // this.getUserTimeStamps();
+    var database = firebase.database();
+    this.getUserTimeStamps().then((time_stamps)=>{
+      console.log(time_stamps);
+      console.log(time_stamp.toString());
+      // console.log("time_stamps: "+time_stamps.indexOf("1494705326902"));
+      if(time_stamps.indexOf(time_stamp.toString())<0){
+        // console.log("not have this time_stamp!"+time_stamps.indexOf(time_stamp));
+        database.ref('/Users/1/').child(time_stamp).child(question).push(response);
+
+      }
+      else{
+        console.log("this time_stamp alreay exist!");
+        database.ref('/Users/1/'+time_stamp+"/").child(question).push(response);
+      }
+    })
+    // console.log("recordResponse:"+time_stamp+question+response);
+  }
+
+
+
+
 
 
 

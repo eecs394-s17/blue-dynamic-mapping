@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import {NavController, NavParams, ViewController} from 'ionic-angular';
 
 import { Prompt } from '../../models/prompt';
+import { PromptService } from '../../providers/prompt-service'
 
 
 @Component({
   	selector: 'prompt-page',
-  	templateUrl: 'prompt-page.html'
+  	templateUrl: 'prompt-page.html',
+    providers: [PromptService]
 })
 
 export class PromptPage {
@@ -16,9 +18,10 @@ export class PromptPage {
 	can_go_next: boolean;
 	first: boolean;
 	last: boolean;
+  time_stamp: any; // get current time_stamp from prompts-root-page
 	callback: (responses: Set<string>, forward: boolean) => void;
 
-  	constructor(private navController: NavController, private navParams: NavParams, private viewCtrl: ViewController) {
+  	constructor(private navController: NavController, private navParams: NavParams, private viewCtrl: ViewController, private promptService: PromptService) {
   		this.selected_responses = new Set();
   		this.callback = navParams.get('callback');
   		this.prompt = navParams.get('prompt');
@@ -26,6 +29,7 @@ export class PromptPage {
   		this.last = navParams.get('last');
   		this.can_go_back = !this.first;
   		this.can_go_next = true;
+      this.time_stamp = navParams.get('time_stamp');
   	}
 
   	ionViewWillEnter() {
@@ -39,11 +43,16 @@ export class PromptPage {
   	responseSelected = (response, selected) => {
   		if (selected) {
   			this.selected_responses.add(response);
-  			
+        console.log("select reponse:"+this.time_stamp+" "+response);
+        // this.promptService.recordResponse(this.time_stamp, this.prompt.question, response);
+
+
   		} else {
   			this.selected_responses.delete(response);
+        console.log("delete response:"+this.time_stamp+" "+response);
   		}
   	}
+
 
 
   	backAction(event) {
