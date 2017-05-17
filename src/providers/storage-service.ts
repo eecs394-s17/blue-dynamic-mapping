@@ -4,6 +4,8 @@ import { Storage } from '@ionic/storage';
 
 import { Prompt } from '../models/prompt';
 
+const JOURNALS_KEY = "journals_key";
+
 @Injectable()
 export class StorageService {
 
@@ -11,40 +13,32 @@ export class StorageService {
 
   }
 
-  saveMostRecentJournalEntry(date, subject, thoughts){
-
-    // var obj = JSON.parse( localStorage.getItem('obj') ) || {};
+  async saveMostRecentJournalEntry(date, subject, thoughts){
     console.log('saving journal');
-
-    return this.storage.ready().then(() => {
-      return this.storage.set('timestamp', date).then((res) => {
-        console.log(res);
-        return this.storage.set('subject', subject).then((res) => {
-          console.log(res);
-          return this.storage.set('thoughts', thoughts).then((res) => {
-            console.log(res);
-            return true;
-          })
-        })
-      })
-    })
-  }
-
-  getMostRecentJournalEntry(){
-    console.log('fetching responses');
-    return this.storage.ready().then(() => {
-      return this.storage.get('timestamp').then((timestamp) => {
-        return this.storage.get('subject').then((subject) => {
-          return this.storage.get('thoughts').then((thoughts) => {
-            return {
-              timestamp: timestamp,
-              subject: subject,
-              thoughts: thoughts
-            };
-          });
-        });
-      })
+    
+    let journals = await this.getAllJournalEntries();
+   
+    journals.push({
+       timestamp: date,
+       subject: subject,
+       thougts: thoughts
     });
+
+    return this.storage.set(JOURNALS_KEY, journals);
   }
 
+  async getAllJournalEntries() {
+    let storage = await this.storage.ready();
+    let journals = await this.storage.get(JOURNALS_KEY);
+    if (!journals) {
+      journals = [];
+    }
+
+    return journals;
+  }
+
+  async getMostRecentJournalEntry() {
+    let all_journals = await this.getAllJournalEntries();
+    return all_journals.slice(-1)[0];
+  }
 }
