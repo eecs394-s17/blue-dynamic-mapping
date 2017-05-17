@@ -14,37 +14,28 @@ import * as moment from 'moment';
 })
 
 export class OldJournalsPage {
-  timestamp: number;
-  day: string;
-  month: string;
-  time: string;
-  subject: string;
-  thoughts: string;
+  journals: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private storageService: StorageService) {
-
     this.load()
-
   }
 
   load(){
-    this.storageService.getMostRecentJournalEntry().then((data) => {
+    this.storageService.getAllJournalEntries().then( (data) => {
       console.log(data);
-      this.timestamp = data['timestamp'],
-      this.subject = data['subject'],
-      this.thoughts = data['thoughts']
+      this.journals = data;
     });
   }
 
-  getDay() {
-    return moment.unix(this.timestamp).format("DD");
-  }
-  getMonth() {
-    return moment.unix(this.timestamp).format("MMM");
-  }
-  getTime(){
-    return moment.unix(this.timestamp).format("h:mm a");
-  }
+  // getDay() {
+  //   return moment.unix(this.timestamp).format("DD");
+  // }
+  // getMonth() {
+  //   return moment.unix(this.timestamp).format("MMM");
+  // }
+  // getTime(){
+  //   return moment.unix(this.timestamp).format("h:mm a");
+  // }
 
 
-}  
+}

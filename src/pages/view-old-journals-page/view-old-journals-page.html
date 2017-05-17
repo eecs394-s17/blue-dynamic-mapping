@@ -8,16 +8,18 @@
 </ion-header>
 
 
-<ion-content padding> 
+<ion-content padding>
 
-<ion-list> 
-  <ion-item> 
-    <ion-label> {{ getMonth() }} {{ getDay() }} at {{ getTime() }}  </ion-label>
-    <strong> {{ subject }} </strong> <br>
+<ion-list>
+  <!-- <ion-item> -->
+  <ion-item *ngFor="let journal of journals">
+
+    <!-- <ion-label> {{ getMonth() }} {{ getDay() }} at {{ getTime() }}  </ion-label> -->
+    <strong> {{journal.timestamp}} &nbsp; {{ journal.subject }} </strong> <br>
   </ion-item>
 </ion-list>
 
-{{ thoughts }}
+<!-- {{ thoughts }} -->
 
 
 
