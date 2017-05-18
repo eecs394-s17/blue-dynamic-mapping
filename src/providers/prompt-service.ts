@@ -25,15 +25,18 @@ export class PromptService {
   	return p;
   }
 
-  fetchPrompts(){
+  async fetchPrompts() {
+    let question_map = await this.fetchQuestionMap();
+    let response_map = await this.fetchResponseMap();
+    let prompt_map = await this.fetchPromptMap();
+    let prompt_order = await this.fetchPromptOrder();
 
-    let prompts = []
-    return firebase.database().ref('/Prompts/').once('value').then((snapshot) => {
-        var promptJSONS = snapshot.val();
-        prompts = prompts.concat(promptJSONS.map(this.JSONtoPrompt));
-        return prompts
-  })
+    let prompt_JSONs = this.generatePromptJSONS(prompt_map, question_map, response_map);
+    let sorted_prompt_JSONs = this.sortPromptJSONs(prompt_order, prompt_JSONs);
 
+    let prompts = sorted_prompt_JSONs.map(this.JSONtoPrompt);
+    console.log(prompts);
+    return prompts;
   }
 
   getUserTimeStamps(){
@@ -83,8 +86,59 @@ export class PromptService {
 
 
 
+  // New Stuff
+  async fetchDataAtRef(ref) {
+    let snapshot = await firebase.database().ref(ref).once('value'); 
+    return snapshot.val();   
+  }
 
+  async fetchQuestionMap() {
+    return this.fetchDataAtRef('/QuestionMap/');
+  }
 
+  async fetchResponseMap() {
+    return this.fetchDataAtRef('/ResponseMap/');
+  }
 
+  async fetchPromptMap() {
+    return this.fetchDataAtRef('/PromptMap/');
+  }
 
+  async fetchPromptOrder() {
+    return this.fetchDataAtRef('/PromptOrder/');
+  }
+
+  generatePromptJSONS(prompt_map, question_map, response_map) {
+    let prompts = [];
+    for (var prompt_key in prompt_map) {
+      let prompt = prompt_map[prompt_key];
+
+      let question_key = prompt.question_key;
+      let question = question_map[question_key];
+
+      let response_keys = prompt.response_keys;
+      let responses = [];
+      response_keys.forEach((key) => {
+        responses.push(response_map[key]);
+      });
+
+      let p = {
+        key: prompt_key,
+        question: question,
+        responses: responses
+      };
+
+      prompts.push(p);
+    }
+
+    return prompts;
+  }
+
+  sortPromptJSONs(prompt_order, prompt_JSONs) {
+    prompt_JSONs.sort((lhs, rhs) =>  {
+      return prompt_order[lhs.key] - prompt_order[rhs.key];
+    });
+
+    return prompt_JSONs;
+  }
 }
