@@ -17,6 +17,9 @@ import { JournalPage } from '../pages/journal-page/journal-page';
 import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
 import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-page';
 
+import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
+import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page'; 
+
 import { ResponseButton } from '../components/response-button/response-button';
 import {Autosize} from 'ionic2-autosize';
 
@@ -32,7 +35,9 @@ import {Autosize} from 'ionic2-autosize';
     OldJournalsPage,
     MantraPage,
     ResponseButton,
-    Autosize
+    Autosize,
+    PromptChoicesPage,
+    ResponseChoicesPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -51,6 +56,8 @@ import {Autosize} from 'ionic2-autosize';
     JournalDetailPage,
     OldJournalsPage,
     MantraPage,
+    PromptChoicesPage,
+    ResponseChoicesPage,
     ResponseButton
   ],
   providers: [
