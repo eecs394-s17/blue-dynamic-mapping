@@ -14,6 +14,9 @@ import { MantraPage } from '../pages/mantra-page/mantra-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
+import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page'; 
+
 import { ResponseButton } from '../components/response-button/response-button';
 import {Autosize} from 'ionic2-autosize';
 
@@ -27,6 +30,8 @@ import {Autosize} from 'ionic2-autosize';
     MantraPage,
     ResponseButton,
     Autosize,
+    PromptChoicesPage,
+    ResponseChoicesPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -42,6 +47,8 @@ import {Autosize} from 'ionic2-autosize';
     PromptPage,
     SummaryPage,
     MantraPage,
+    PromptChoicesPage,
+    ResponseChoicesPage,
     ResponseButton
   ],
   providers: [
