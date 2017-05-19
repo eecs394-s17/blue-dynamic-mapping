@@ -5,17 +5,20 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
 import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
+import { MantraPage } from '../pages/mantra-page/mantra-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JournalPage } from '../pages/journal-page/journal-page';
 import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
 
+import {Autosize} from 'ionic2-autosize';
 
 import * as firebase from 'firebase';
 
 
 @Component({
   templateUrl: 'app.html'
+  
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;

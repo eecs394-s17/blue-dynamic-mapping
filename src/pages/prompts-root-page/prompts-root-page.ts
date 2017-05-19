@@ -7,6 +7,7 @@ import { StorageService } from '../../providers/storage-service';
 import { Prompt } from '../../models/prompt';
 import { PromptPage } from '../prompt-page/prompt-page';
 import { SummaryPage } from '../summary-page/summary-page';
+import { MantraPage } from '../mantra-page/mantra-page';
 
 @Component({
   selector: 'prompts-root-page',
@@ -18,10 +19,13 @@ export class PromptsRootPage {
   prompts: Prompt[];
   responses: any;
   current_prompt_index: number;
+  time_stamp: any;
 
   constructor(public navCtrl: NavController, private promptService: PromptService, private storageService: StorageService) {
-    this.load();  
+    this.load();
     this.responses = {};
+    this.time_stamp = Math.floor(Date.now());
+    console.log("root time:" + this.time_stamp);
   }
 
   load() {
@@ -41,6 +45,7 @@ export class PromptsRootPage {
       prompt: this.prompts[this.current_prompt_index],
       first: this.current_prompt_index == 0,
       last: this.current_prompt_index == this.prompts.length - 1,
+      time_stamp: this.time_stamp,
       callback: this.promptCallback
     });
   }
@@ -65,10 +70,11 @@ export class PromptsRootPage {
         //   });
         // });
 
-        this.navCtrl.push(SummaryPage, {
-          prompts: this.prompts, 
-          responses: this.responses
+        this.navCtrl.push(MantraPage, {
+          prompts: this.prompts,
+          responses: this.responses,
+          time_stamp: this.time_stamp
         });
       }
     }
-}  
+}
