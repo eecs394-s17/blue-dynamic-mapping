@@ -20,8 +20,21 @@ import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-p
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page'; 
 
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
+
 import { ResponseButton } from '../components/response-button/response-button';
 import {Autosize} from 'ionic2-autosize';
+
+import { AuthData } from '../providers/auth-data';
+
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+}
 
 @NgModule({
   declarations: [
@@ -37,6 +50,9 @@ import {Autosize} from 'ionic2-autosize';
     ResponseButton,
     Autosize,
     PromptChoicesPage,
+    LoginPage,
+    SignupPage,
+    ResetPasswordPage,
     ResponseChoicesPage
   ],
   imports: [
@@ -58,12 +74,16 @@ import {Autosize} from 'ionic2-autosize';
     MantraPage,
     PromptChoicesPage,
     ResponseChoicesPage,
+    LoginPage,
+    SignupPage,
+    ResetPasswordPage,
     ResponseButton
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthData
   ]
 })
 export class AppModule {}
