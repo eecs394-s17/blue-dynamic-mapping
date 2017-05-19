@@ -11,16 +11,22 @@
 <ion-content padding>
 
 <ion-list>
-  <!-- <ion-item> -->
   <ion-item *ngFor="let journal of journals">
-
-    <!-- <ion-label> {{ getMonth() }} {{ getDay() }} at {{ getTime() }}  </ion-label> -->
-    <strong> {{journal.timestamp}} &nbsp; {{ journal.subject }} </strong> <br>
+    <ion-label> 
+      <ion-row align-items-start>
+        <ion-col col-auto>
+          <div class="expandEntry" (click)="expandEntry(journal)">
+              <p class = "subjectLine"> {{journal.subject}} </p>
+              <p class = "dates" > {{getDay(journal)}} {{getMonth(journal)}} at {{getTime(journal)}} </p>
+          </div>
+        </ion-col>
+        <ion-col align-items-end>
+          <ion-icon (click)="removeJournalEntry(journal)" class="trashIcon" ios="ios-trash" md="md-trash"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-label> 
+    
   </ion-item>
 </ion-list>
-
-<!-- {{ thoughts }} -->
-
-
 
 </ion-content>

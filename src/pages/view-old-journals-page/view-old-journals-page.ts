@@ -3,8 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { StorageService } from '../../providers/storage-service';
 import { Prompt } from '../../models/prompt';
-import { PromptPage } from '../prompt-page/prompt-page';
-import { HomePage } from '../home-page/home-page';
+import { JournalDetailPage } from '../journal-detail-page/journal-detail-page';
 import * as moment from 'moment';
 
 @Component({
@@ -21,21 +20,34 @@ export class OldJournalsPage {
   }
 
   load(){
+
     this.storageService.getAllJournalEntries().then( (data) => {
-      console.log(data);
       this.journals = data;
+    });
+
+  }
+
+  getDay(j) {
+    return moment.unix(j.timestamp).format("DD");
+  }
+  getMonth(j) {
+    return moment.unix(j.timestamp).format("MMM");
+  }
+  getTime(j){
+    return moment.unix(j.timestamp).format("h:mm a");
+  }
+
+  removeJournalEntry(j){
+    this.storageService.removeJournalEntry(j).then( () => {
+      this.load();
     });
   }
 
-  // getDay() {
-  //   return moment.unix(this.timestamp).format("DD");
-  // }
-  // getMonth() {
-  //   return moment.unix(this.timestamp).format("MMM");
-  // }
-  // getTime(){
-  //   return moment.unix(this.timestamp).format("h:mm a");
-  // }
+  expandEntry(j){
+    this.navCtrl.push(JournalDetailPage, {
+       journal: j
+    })
+  }
 
 
 }

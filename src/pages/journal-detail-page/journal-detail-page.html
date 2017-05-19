@@ -1,0 +1,15 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Journalling Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  {{ getDay(journal) }} {{ getMonth(journal) }} at {{ getTime(journal) }} <br>
+  {{ journal.subject }} <br>
+  {{ journal.thougts }} 
+</ion-content>

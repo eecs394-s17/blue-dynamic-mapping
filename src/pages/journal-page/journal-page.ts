@@ -27,33 +27,10 @@ export class JournalPage {
   }
 
   storeJournal(){
-    this.dateTime = new Date().getTime();
+    this.dateTime = Math.round((new Date()).getTime() / 1000)
     this.storageService.saveMostRecentJournalEntry(this.dateTime, this.journalForm.value.subject, this.journalForm.value.thoughts). then((res) => {
-      console.log(res);
+      this.navCtrl.push(OldJournalsPage)
     });
-    this.storageService.getMostRecentJournalEntry().then((data) => {
-      this.navCtrl.push(OldJournalsPage) 
-    });
+
   }
-
-
- // this.storageService.saveMostRecentResponse(this.prompts, this.responses).then((res) => {
-    //   console.log(res);
-    //   this.storageService.getMostRecentReponse().then((res) => {
-    //     console.log(res);
-    //   });
-    // });
-
-  // pushSummary(event) {
-  //   this.storageService.getMostRecentReponse().then((data) => {
-  //     console.log(data);
-  //     this.navCtrl.push(SummaryPage, {
-  //         prompts: data.getItem('prompts'),
-  //         responses: data.getItem('responses')
-  //       });
-  //   });
-  // }
-
-
-
 }

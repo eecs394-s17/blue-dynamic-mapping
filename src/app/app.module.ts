@@ -13,6 +13,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JournalPage } from '../pages/journal-page/journal-page';
 import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
+import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-page';
 
 import { ResponseButton } from '../components/response-button/response-button';
 
@@ -24,6 +25,7 @@ import { ResponseButton } from '../components/response-button/response-button';
     PromptPage,
     SummaryPage,
     JournalPage,
+    JournalDetailPage,
     OldJournalsPage,
     ResponseButton
   ],
@@ -40,6 +42,7 @@ import { ResponseButton } from '../components/response-button/response-button';
     PromptPage,
     SummaryPage,
     JournalPage,
+    JournalDetailPage,
     OldJournalsPage,
     ResponseButton
   ],
