@@ -71,7 +71,7 @@ export class PromptsRootPage {
         //   });
         // });
 
-        this.navCtrl.push(SummaryPage, {
+        this.navCtrl.push(MantraPage, {
           prompts: this.prompts,
           responses: this.responses,
           time_stamp: this.time_stamp

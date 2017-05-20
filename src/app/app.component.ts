@@ -12,6 +12,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JournalPage } from '../pages/journal-page/journal-page';
 import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
+import { OldResponsesPage } from '../pages/view-old-responses-page/view-old-responses-page';
 
 import {Autosize} from 'ionic2-autosize';
 
@@ -20,7 +21,7 @@ import * as firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
-  
+
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -34,17 +35,18 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen
-  ) 
+  )
   {
- 
+
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Track Argument', component: PromptsRootPage }, 
+      { title: 'Track Argument', component: PromptsRootPage },
       { title: 'Journal', component: JournalPage},
       { title: 'Old Journals', component: OldJournalsPage },
-      { title: 'Edit Prompts', component: PromptChoicesPage }
+      { title: 'Edit Prompts', component: PromptChoicesPage },
+      { title: 'Old Responses', component: OldResponsesPage }
     ];
   }
 
