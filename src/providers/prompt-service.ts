@@ -42,7 +42,7 @@ export class PromptService {
 
   getUserTimeStamps(){
     // let time_stamps = [];
-    return firebase.database().ref('/Users/1/').once('value').then((snapshot) => {
+    return firebase.database().ref('/Users/1/PriorResponses').once('value').then((snapshot) => {
         var time_stamps = snapshot.val();
         // console.log("getUserTimeStamps:"+Object.keys(time_stamps));
         return Object.keys(time_stamps);
@@ -83,6 +83,8 @@ export class PromptService {
     })
     // console.log("recordResponse:"+time_stamp+question+response);
   }
+
+
 
 
 

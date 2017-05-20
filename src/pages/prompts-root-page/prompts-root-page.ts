@@ -24,7 +24,8 @@ export class PromptsRootPage {
   constructor(public navCtrl: NavController, private promptService: PromptService, private storageService: StorageService) {
     this.load();
     this.responses = {};
-    this.time_stamp = Math.floor(Date.now());
+    // this.time_stamp = Math.floor(Date.now());
+    this.time_stamp = Math.round((new Date()).getTime() / 1000);
     console.log("root time:" + this.time_stamp);
   }
 

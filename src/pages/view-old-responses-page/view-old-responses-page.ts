@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
-import { StorageService } from '../../providers/storage-service';
+import { PromptService } from '../../providers/prompt-service';
 import { Prompt } from '../../models/prompt';
 import { JournalDetailPage } from '../journal-detail-page/journal-detail-page';
 import * as moment from 'moment';
@@ -9,45 +9,35 @@ import * as moment from 'moment';
 @Component({
   selector: 'view-old-responses-page',
   templateUrl: 'view-old-responses-page.html',
-  providers: [StorageService]
+  // providers: [StorageService]
+  providers: [PromptService]
 })
 
 export class OldResponsesPage {
-  journals: any;
+  time_stamps: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storageService: StorageService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService) {
     this.load()
   }
 
   load(){
 
-    this.storageService.getAllJournalEntries().then( (data) => {
-      this.journals = data;
+    this.promptService.getUserTimeStamps().then((data) => {
+      this.time_stamps = data;
     });
 
+
+  }
+  getDay(timestamp) {
+    return moment.unix(timestamp).format("DD");
+  }
+  getMonth(timestamp) {
+    return moment.unix(timestamp).format("MMM");
+  }
+  getTime(timestamp){
+    return moment.unix(timestamp).format("h:mm a");
   }
 
-  getDay(j) {
-    return moment.unix(j.timestamp).format("DD");
-  }
-  getMonth(j) {
-    return moment.unix(j.timestamp).format("MMM");
-  }
-  getTime(j){
-    return moment.unix(j.timestamp).format("h:mm a");
-  }
-
-  removeJournalEntry(j){
-    this.storageService.removeJournalEntry(j).then( () => {
-      this.load();
-    });
-  }
-
-  expandEntry(j){
-    this.navCtrl.push(JournalDetailPage, {
-       journal: j
-    })
-  }
 
 
 }
