@@ -155,6 +155,7 @@ export class PromptService {
     let question_map = await this.fetchQuestionMap();
     let response_map = await this.fetchResponseMap();
     let prompt_map = await this.fetchPromptMap();  
+    let active_response_map = await this.fetchActiveResponseMap();
 
     let data = [];
     for (var prompt_key in prompt_map) {
@@ -167,7 +168,12 @@ export class PromptService {
       let response_keys = prompt.response_keys;
       let response_data = [];
       response_keys.forEach((key) => {
-        response_data.push({text: response_map[key], key: key});
+        let is_active = !(key in active_response_map && active_response_map[key] == false);
+        response_data.push({
+            text:      response_map[key], 
+            key:       key, 
+            is_active: is_active
+          });
       });
 
       data.push({question_data: question_data, response_data: response_data});

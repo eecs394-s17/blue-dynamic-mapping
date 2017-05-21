@@ -31,7 +31,6 @@ export class PromptsRootPage {
   load() {
     this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
       this.setPrompts(prompts);
-      console.log(prompts);
     });
   }
 
@@ -71,7 +70,7 @@ export class PromptsRootPage {
           });
         });
 
-        this.navCtrl.push(SummaryPage, {
+        this.navCtrl.push(MantraPage, {
           prompts: this.prompts,
           responses: this.responses,
           time_stamp: this.time_stamp
