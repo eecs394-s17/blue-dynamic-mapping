@@ -3,7 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { PromptService } from '../../providers/prompt-service';
 import { Prompt } from '../../models/prompt';
-import { JournalDetailPage } from '../journal-detail-page/journal-detail-page';
+import { OldResponsesDetailPage } from '../old-responses-detail-page/old-responses-detail-page';
 import * as moment from 'moment';
 
 @Component({
@@ -37,7 +37,11 @@ export class OldResponsesPage {
   getTime(timestamp){
     return moment.unix(timestamp).format("h:mm a");
   }
-
+  expandEntry(t){
+    this.navCtrl.push(OldResponsesDetailPage, {
+       time_stamp: t
+    })
+  }
 
 
 }

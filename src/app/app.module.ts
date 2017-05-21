@@ -17,7 +17,7 @@ import { JournalPage } from '../pages/journal-page/journal-page';
 import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
 import { OldResponsesPage } from '../pages/view-old-responses-page/view-old-responses-page';
 import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-page';
-
+import { OldResponsesDetailPage } from '../pages/old-responses-detail-page/old-responses-detail-page';
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
 
@@ -35,6 +35,7 @@ import {Autosize} from 'ionic2-autosize';
     JournalDetailPage,
     OldJournalsPage,
     OldResponsesPage,
+    OldResponsesDetailPage,
     MantraPage,
     ResponseButton,
     Autosize,
@@ -58,6 +59,7 @@ import {Autosize} from 'ionic2-autosize';
     JournalDetailPage,
     OldJournalsPage,
     OldResponsesPage,
+    OldResponsesDetailPage,
     MantraPage,
     PromptChoicesPage,
     ResponseChoicesPage,

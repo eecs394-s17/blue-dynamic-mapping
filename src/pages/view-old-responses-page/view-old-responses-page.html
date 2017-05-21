@@ -15,7 +15,7 @@
     <ion-label>
       <ion-row align-items-start>
         <ion-col col-auto>
-          <div class="expandEntry">
+          <div class="expandEntry" (click)="expandEntry(time_stamp)">
               <!-- <p class = "subjectLine"> {{time_stamp}} </p> -->
               <p class = "subjectLine" > {{getDay(time_stamp)}} {{getMonth(time_stamp)}} at {{getTime(time_stamp)}} </p>
           </div>
