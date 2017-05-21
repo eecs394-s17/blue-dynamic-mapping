@@ -1,5 +1,7 @@
+import { Response } from '../../models/response';
+
 export class Prompt {
 	question: string;
-	responses: string[];
+	responses: Response[];
 	max_choices: number;
 }
