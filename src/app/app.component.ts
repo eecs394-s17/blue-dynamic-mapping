@@ -3,6 +3,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
+import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
+import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
 import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { MantraPage } from '../pages/mantra-page/mantra-page';
@@ -36,7 +38,8 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Track Argument', component: PromptsRootPage }
+      { title: 'Track Argument', component: PromptsRootPage },
+      { title: 'Edit Prompts', component: PromptChoicesPage }
     ];
   }
 
