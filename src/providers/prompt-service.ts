@@ -93,8 +93,8 @@ export class PromptService {
       // var list = Object.keys(temp_list);
       var responses_list = (<any>Object).values(temp_list);
       for(var i=0; i<responses_list.length; i++ ){
-  
-        console.log("response "+i+": "+responses_list[i]);
+
+        console.log(responses_list[i]);
 
       }
       return responses_list;
