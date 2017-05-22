@@ -5,7 +5,7 @@ import { AuthData } from '../../providers/auth-data';
 import { SignupPage } from '../signup/signup';
 import { HomePage } from '../home-page/home-page';
 import { ResetPasswordPage } from '../reset-password/reset-password';
-import { EmailValidator } from '../../validators/email'; 
+import { EmailValidator } from '../../validators/email';
 
 @Component({
   selector: 'page-login',
@@ -49,7 +49,7 @@ export class LoginPage {
         // this.loading.dismiss().then( () => {
         //   this.nav.setRoot(TabsPage);
         // });
-        this.nav.push(HomePage, {}, {animate: false});
+        this.nav.setRoot(HomePage, {}, {animate: false});
         // this.nav.pop();
       }, error => {
         // this.loading.dismiss().then( () => {

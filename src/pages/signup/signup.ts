@@ -41,7 +41,7 @@ export class SignupPage {
         //   this.nav.setRoot(TabsPage)
         //   //this.rootPage = TabsPage;
         // });
-        this.nav.push(HomePage, {}, {animate: false});
+        this.nav.setRoot(HomePage, {}, {animate: false});
         //this.nav.pop();
       }, (error) => {
         // this.loading.dismiss().then( () => {
