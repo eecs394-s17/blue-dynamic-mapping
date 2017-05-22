@@ -15,7 +15,7 @@ import { HomePage } from '../home-page/home-page';
 export class OldResponsesDetailPage {
   time_stamp: any;
   prompts: Prompt[];
-  responses_list = [];
+  responses_list: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService) {
@@ -28,27 +28,28 @@ export class OldResponsesDetailPage {
     //   }
     // }
     this.time_stamp = navParams.get('time_stamp');
-    console.log("time_stamp: "+this.time_stamp);
+    console.log("detail time_stamp: "+this.time_stamp);
     this.load();
     // console.log("responses_list[0]"+this.responses_list);
+    console.log("detail responses_list:"+this.responses_list);
   }
 
   load() {
     this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
       this.prompts = prompts;
-      console.log("history responses detail:"+this.prompts);
-      this.promptService.fetchOldResponses(this.time_stamp, this.prompts[0].question);
+      // console.log("history responses detail:"+this.prompts);
+      this.responses_list = this.promptService.fetchOldResponses(this.time_stamp, this.prompts[0].question);
+      // console.log("responses_list: "+responses_list);
+      // console.log("responses_list: "+responses_list);
+      // for(var i=0; i<responses_list.length; i++){
+      // console.log("response "+": "+responses_list[0]);
+      // }
       // console.log(this.promptService.fetchOldResponses(this.time_stamp, this.prompts[0].question));
     });
 
 
 
   }
-
-  getResponses(time_stamp, question){
-
-  }
-
 
 
 

@@ -85,16 +85,24 @@ export class PromptService {
   }
 
   fetchOldResponses(time_stamp, question){
+    // console.log("time_stamp: "+time_stamp);
+    // console.log("question: "+question);
     return firebase.database().ref('/Users/1/PriorResponses/'+time_stamp+'/'+question).once('value').then((snapshot) => {
-      var response_list = snapshot.val();
-      var list = Object.keys(response_list);
-      for(var i=0; i<list.length; i++ ){
-        console.log("list "+i+": "+list[i]);
-        // console.log(this.fetchDataAtRef('/Users/1/PriorResponses/'+time_stamp+'/'+question)[list[i]]);
+      var temp_list = snapshot.val();
+      // console.log("temp_list: "+temp_list);
+      // var list = Object.keys(temp_list);
+      var responses_list = (<any>Object).values(temp_list);
+      for(var i=0; i<responses_list.length; i++ ){
+  
+        console.log("response "+i+": "+responses_list[i]);
 
       }
-      return Object.keys(response_list);
+      return responses_list;
     })
+  }
+
+  fetchOldQuestions(time_stamp){
+
   }
 
 
