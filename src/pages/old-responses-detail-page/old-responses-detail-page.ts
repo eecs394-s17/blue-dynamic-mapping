@@ -31,14 +31,17 @@ export class OldResponsesDetailPage {
     console.log("detail time_stamp: "+this.time_stamp);
     this.load();
     // console.log("responses_list[0]"+this.responses_list);
-    console.log("detail responses_list:"+this.responses_list);
+
   }
 
   load() {
     this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
       this.prompts = prompts;
       // console.log("history responses detail:"+this.prompts);
-      this.responses_list = this.promptService.fetchOldResponses(this.time_stamp, this.prompts[0].question);
+      this.promptService.fetchOldResponses(this.time_stamp, this.prompts[0].question).then( (list) => {
+        this.responses_list = list;
+        console.log("detail responses_list:"+this.responses_list);
+      });
       // console.log("responses_list: "+responses_list);
       // console.log("responses_list: "+responses_list);
       // for(var i=0; i<responses_list.length; i++){
