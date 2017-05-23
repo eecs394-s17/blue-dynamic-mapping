@@ -38,7 +38,6 @@ export class PromptService {
     let sorted_prompt_JSONs = this.sortPromptJSONs(prompt_order, prompt_JSONs);
 
     let prompts = sorted_prompt_JSONs.map(this.JSONtoPrompt);
-    console.log(prompts);
     return prompts;
   }
 
@@ -183,10 +182,12 @@ export class PromptService {
   }
 
   async makeResponseActive(response_key) {
+    console.log(response_key);
     return firebase.database().ref('/Users/').child(this.getUserId()).child('ResponseChoices').child(response_key).set(true);
   }
 
   async makeResponseInactive(response_key) {
+      console.log(response_key);
     return firebase.database().ref('/Users/').child(this.getUserId()).child('ResponseChoices').child(response_key).set(false);
   }
 }

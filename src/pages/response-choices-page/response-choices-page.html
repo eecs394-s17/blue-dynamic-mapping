@@ -1,12 +1,10 @@
-<ion-header no-border>
+<ion-header>
   <ion-navbar>
-<!--     <button ion-button menuToggle>
+    <ion-title>Edit Prompts</ion-title>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button> -->
-    <!-- <ion-title></ion-title> -->
-    
-
-  </ion-navbar>
+    </button>
+  </ion-navbar >
 </ion-header>
 
 <ion-content no-padding no-margin style="background-color: #E8E8E8;">
@@ -14,9 +12,9 @@
   <ion-list>
 
     <ion-item *ngFor="let r of responses" >
-          <ion-label> {{r}} </ion-label>
-          <ion-toggle value="foo" *ngIf="false" checked="true" (ionChange)="subscribe(c)"></ion-toggle>
-          <ion-toggle value="foo" *ngIf="true" checked="false" (ionChange)="subscribe(c)"></ion-toggle>
+          <ion-label> {{r.text}} </ion-label>
+          <ion-toggle value="foo" *ngIf="r.is_active" checked="true" (ionChange)="subscribe(r)"></ion-toggle>
+          <ion-toggle value="foo" *ngIf="!r.is_active" checked="false" (ionChange)="subscribe(r)"></ion-toggle>
     </ion-item>
 
   </ion-list>

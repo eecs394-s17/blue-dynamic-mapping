@@ -15,7 +15,7 @@ import { ResponseChoicesPage } from '../response-choices-page/response-choices-p
 })
 
 export class PromptChoicesPage {
-  prompts: Prompt[];
+  prompts: any[];
   responses: any;
   //current_prompt_index: number;
   //time_stamp: any;
@@ -28,21 +28,23 @@ export class PromptChoicesPage {
   }
 
   load() {
-    this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
+    this.promptService.fetchQuestionAndResponseChoices().then((prompts: any[]) => {
       this.setPrompts(prompts);
     });
   }
 
   setPrompts(prompts) {
     this.prompts = prompts;
-    this.displayNextPrompt();
+    console.log(prompts);
+
   }
 
   itemTapped(event, item) {
 
     //let view = this.navCtrl.getActive().component.name;
   	this.navCtrl.push(ResponseChoicesPage, {
-  		responses: this.prompts[item].responses});
+  		responses: this.prompts[item].response_data,
+      callback: this.promptCallback});
   }
 
   displayNextPrompt() {
@@ -59,27 +61,7 @@ export class PromptChoicesPage {
     this.navCtrl.pop();
   }
 
-  // promptCallback = (responses, forward) => {
-  //     this.responses[this.current_prompt_index] = responses;
-  //     if (forward && this.current_prompt_index < this.prompts.length - 1) {
-  //       this.current_prompt_index++;
-  //       this.displayNextPrompt();
-  //     } else if (!forward) {
-  //       this.current_prompt_index--;
-  //       this.displayPrevPrompt();
-  //     } else {
-  //       this.storageService.saveMostRecentResponse(this.prompts, this.responses).then((res) => {
-  //         console.log(res);
-  //         this.storageService.getMostRecentReponse().then((res) => {
-  //           console.log(res);
-  //         });
-  //       });
-
-  //       this.navCtrl.push(SummaryPage, {
-  //         prompts: this.prompts,
-  //         responses: this.responses,
-  //         time_stamp: this.time_stamp
-  //       });
-  //     }
-  //   }
+  promptCallback = (forward) => {
+      this.load();
+    }
 }
