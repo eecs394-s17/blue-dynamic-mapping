@@ -12,7 +12,9 @@ firebase.initializeApp(FIREBASE_CONFIG);
 
 @Injectable()
 export class PromptService {
-
+  getUserId() {
+    return '1';
+  }
 
   getUserPrompts(): Promise<Prompt[]> {
     return Promise.resolve(PROMPTS.map(this.parsePrompt));
@@ -31,8 +33,9 @@ export class PromptService {
     let response_map = await this.fetchResponseMap();
     let prompt_map = await this.fetchPromptMap();
     let prompt_order = await this.fetchPromptOrder();
+    let active_response_map = await this.fetchActiveResponseMap();
 
-    let prompt_JSONs = this.generatePromptJSONS(prompt_map, question_map, response_map);
+    let prompt_JSONs = this.generatePromptJSONS(prompt_map, question_map, response_map, active_response_map);
     let sorted_prompt_JSONs = this.sortPromptJSONs(prompt_order, prompt_JSONs);
 
     let prompts = sorted_prompt_JSONs.map(this.JSONtoPrompt);
@@ -109,7 +112,11 @@ export class PromptService {
     return this.fetchDataAtRef('/PromptOrder/');
   }
 
-  generatePromptJSONS(prompt_map, question_map, response_map) {
+  async fetchActiveResponseMap() {
+    return this.fetchDataAtRef('/Users/' + this.getUserId() + '/' + 'ResponseChoices');
+  }
+
+  generatePromptJSONS(prompt_map, question_map, response_map, active_response_map) {
     let prompts = [];
     for (var prompt_key in prompt_map) {
       let prompt = prompt_map[prompt_key];
@@ -120,7 +127,9 @@ export class PromptService {
       let response_keys = prompt.response_keys;
       let responses = [];
       response_keys.forEach((key) => {
-        responses.push(response_map[key]);
+        if (!(key in active_response_map && active_response_map[key] == false)) {
+          responses.push(response_map[key]);
+        }
       });
 
       let p = {
@@ -141,5 +150,44 @@ export class PromptService {
     });
 
     return prompt_JSONs;
+  }
+
+  async fetchQuestionAndResponseChoices() {
+    let question_map = await this.fetchQuestionMap();
+    let response_map = await this.fetchResponseMap();
+    let prompt_map = await this.fetchPromptMap();  
+    let active_response_map = await this.fetchActiveResponseMap();
+
+    let data = [];
+    for (var prompt_key in prompt_map) {
+      let prompt = prompt_map[prompt_key];
+
+      let question_key = prompt.question_key;
+      let question = question_map[question_key];
+      let question_data = {text: question, key: question_key};
+
+      let response_keys = prompt.response_keys;
+      let response_data = [];
+      response_keys.forEach((key) => {
+        let is_active = !(key in active_response_map && active_response_map[key] == false);
+        response_data.push({
+            text:      response_map[key], 
+            key:       key, 
+            is_active: is_active
+          });
+      });
+
+      data.push({question_data: question_data, response_data: response_data});
+    }
+
+    return data;
+  }
+
+  async makeResponseActive(response_key) {
+    return firebase.database().ref('/Users/').child(this.getUserId()).child('ResponseChoices').child(response_key).set(true);
+  }
+
+  async makeResponseInactive(response_key) {
+    return firebase.database().ref('/Users/').child(this.getUserId()).child('ResponseChoices').child(response_key).set(false);
   }
 }
