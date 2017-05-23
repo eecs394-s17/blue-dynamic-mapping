@@ -18,11 +18,13 @@ import { MantraPage } from '../mantra-page/mantra-page';
 export class ResponseChoicesPage {
   prompts: Prompt[];
   responses: any;
+  callback: (boolean) => void;
   //current_prompt_index: number;
   //time_stamp: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService, private storageService: StorageService) {
     this.responses = this.navParams.get('responses');
+    this.callback = navParams.get('callback');
     this.load();
     
     //this.time_stamp = Math.floor(Date.now());
@@ -47,5 +49,21 @@ export class ResponseChoicesPage {
   // 		item: item});
   // }
 
+  subscribe(r){
+
+    if(r.is_active == true ){
+      this.promptService.makeResponseInactive(r.key);
+      // console.log(' TRUE cal.name ' + cal.name)
+      // console.log('TRUE cal.subscribed ' + cal.subscribed)
+      // console.log('TRUE cal.id ' + cal.id)
+    }
+    else{
+      this.promptService.makeResponseActive(r.key);
+      // console.log('FALSE cal.name ' + cal.name)
+      // console.log('FALSE cal.subscribed ' + cal.subscribed)
+      // console.log('FALSE cal.id ' + cal.id)
+    }
+    this.callback(true);
+  }
 
 }
