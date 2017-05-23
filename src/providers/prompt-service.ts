@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 import { Prompt } from '../models/prompt';
 import { Responses } from '../models/responses';
 // import { ConfirmedResponses } from '../models/confirmed-response';
-import { PROMPTS } from '../mock-prompts'
+
 
 import * as firebase from "firebase";
 import { FIREBASE_CONFIG } from "../../APP_SECRETS";
@@ -16,9 +16,9 @@ export class PromptService {
     return '1';
   }
 
-  getUserPrompts(): Promise<Prompt[]> {
-    return Promise.resolve(PROMPTS.map(this.parsePrompt));
-  }
+  // getUserPrompts(): Promise<Prompt[]> {
+  //   // return Promise.resolve(PROMPTS.map(this.parsePrompt));
+  // }
 
   parsePrompt(data): Prompt {
   	let p = new Prompt();
