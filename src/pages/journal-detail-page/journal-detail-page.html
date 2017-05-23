@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Journalling Detail Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+	<ion-card>
+
+	  <ion-item>
+	    <h2> {{ journal.subject }} </h2>
+	    <p> {{ getDay(journal) }} {{ getMonth(journal) }} at {{ getTime(journal) }} </p>
+	  </ion-item>
+
+	  <ion-card-content>
+	    <p> {{ journal.thougts }} </p>
+	  </ion-card-content>
+
+	</ion-card>
+
+</ion-content>

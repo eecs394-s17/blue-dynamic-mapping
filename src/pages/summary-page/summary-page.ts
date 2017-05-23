@@ -15,7 +15,7 @@ import { HomePage } from '../home-page/home-page';
 export class SummaryPage {
   prompts: Prompt[];
   responses_list = [];
-
+  mantra: string;
   received_responses: any;
   current_prompt_index: number;
   time_stamp: any;
@@ -25,22 +25,24 @@ export class SummaryPage {
 
     this.prompts = this.navParams.get('prompts');
     this.received_responses = this.navParams.get('responses');
+    this.mantra = this.navParams.get('mantra');
     this.time_stamp = this.navParams.get('time_stamp');
     this.load();
-    for(var i=0;i<this.prompts.length;i++){
-      // console.log("question:"+this.prompts[i].question);
-      for(var j=0;j<this.responses_list[i].length;j++){
-        // console.log("response "+j+this.responses_list[i][j]);
-        this.promptService.recordResponse(this.time_stamp,this.prompts[i].question,this.responses_list[i][j]);
-      }
-    }
+    // for(var i=0;i<this.prompts.length;i++){
+    //   console.log("question:"+this.prompts[i].question);
+    //   for(var j=0;j<this.responses_list[i].length;j++){
+    //     console.log("response "+j+this.responses_list[i][j]);
+    //     // this.promptService.recordResponse(this.time_stamp,this.prompts[i].question,this.responses_list[i][j]);
+    //   }
+    // }
 
   }
 
   load() {
 
-    this.promptService.getUserPrompts().then((prompts: Prompt[]) => {
+    this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
       this.setPrompts(prompts);
+      console.log("summary-page prompts.length: "+prompts.length);
     });
 
     this.getUserResponses();
@@ -69,6 +71,13 @@ export class SummaryPage {
 
 
   returnHome(){
+    for(var i=0;i<this.prompts.length;i++){
+      // console.log("question:"+this.prompts[i].question);
+      for(var j=0;j<this.responses_list[i].length;j++){
+        // console.log("response "+j+this.responses_list[i][j]);
+        this.promptService.recordResponse(this.time_stamp,this.prompts[i].question,this.responses_list[i][j]);
+      }
+    }
     this.navCtrl.setRoot(HomePage);
   }
 

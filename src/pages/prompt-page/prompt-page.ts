@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {NavController, NavParams, ViewController} from 'ionic-angular';
+import { NavController, NavParams, ViewController} from 'ionic-angular';
 
 import { Prompt } from '../../models/prompt';
 import { PromptService } from '../../providers/prompt-service'

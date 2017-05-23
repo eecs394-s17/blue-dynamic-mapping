@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Old Responses Page </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-list>
+  <ion-item *ngFor="let journal of journals">
+    <ion-label>
+      <ion-row align-items-start>
+        <ion-col col-auto>
+          <div class="expandEntry" (click)="expandEntry(journal)">
+              <p class = "subjectLine"> {{journal.subject}} </p>
+              <p class = "dates" > {{getDay(journal)}} {{getMonth(journal)}} at {{getTime(journal)}} </p>
+          </div>
+        </ion-col>
+        <ion-col align-items-end>
+          <ion-icon (click)="removeJournalEntry(journal)" class="trashIcon" ios="ios-trash" md="md-trash"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-label>
+
+  </ion-item>
+</ion-list>
+
+</ion-content>

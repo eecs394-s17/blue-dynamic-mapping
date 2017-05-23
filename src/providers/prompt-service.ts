@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
 import { Prompt } from '../models/prompt';
+import { Responses } from '../models/responses';
 // import { ConfirmedResponses } from '../models/confirmed-response';
 import { PROMPTS } from '../mock-prompts'
 
@@ -69,17 +70,17 @@ export class PromptService {
 
     var database = firebase.database();
     this.getUserTimeStamps().then((time_stamps)=>{
-      console.log(time_stamps);
-      console.log(time_stamp.toString());
+      // console.log(time_stamps);
+      // console.log(time_stamp.toString());
       // console.log("time_stamps: "+time_stamps.indexOf("1494705326902"));
       if(time_stamps.indexOf(time_stamp.toString())<0){
         // console.log("not have this time_stamp!"+time_stamps.indexOf(time_stamp));
-        database.ref('/Users/1/').child(time_stamp).child(question).push(response);
+        database.ref('/Users/1/PriorResponses').child(time_stamp).child(question).push(response);
 
       }
       else{
         console.log("this time_stamp alreay exist!");
-        database.ref('/Users/1/'+time_stamp+"/").child(question).push(response);
+        database.ref('/Users/1/PriorResponses'+time_stamp+"/").child(question).push(response);
       }
     })
     // console.log("recordResponse:"+time_stamp+question+response);
@@ -90,8 +91,8 @@ export class PromptService {
 
   // New Stuff
   async fetchDataAtRef(ref) {
-    let snapshot = await firebase.database().ref(ref).once('value'); 
-    return snapshot.val();   
+    let snapshot = await firebase.database().ref(ref).once('value');
+    return snapshot.val();
   }
 
   async fetchQuestionMap() {

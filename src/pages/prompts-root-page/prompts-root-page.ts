@@ -63,12 +63,12 @@ export class PromptsRootPage {
         this.current_prompt_index--;
         this.displayPrevPrompt();
       } else {
-        this.storageService.saveMostRecentResponse(this.prompts, this.responses).then((res) => {
-          console.log(res);
-          this.storageService.getMostRecentReponse().then((res) => {
-            console.log(res);
-          });
-        });
+        // this.storageService.saveMostRecentResponse(this.prompts, this.responses).then((res) => {
+        //   console.log(res);
+        //   this.storageService.getMostRecentReponse().then((res) => {
+        //     console.log(res);
+        //   });
+        // });
 
         this.navCtrl.push(MantraPage, {
           prompts: this.prompts,

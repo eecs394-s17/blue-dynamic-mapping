@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, NgZone } from '@angular/core';
 
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
@@ -10,6 +10,14 @@ import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { MantraPage } from '../pages/mantra-page/mantra-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { JournalPage } from '../pages/journal-page/journal-page';
+import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
+
+import { OldResponsesPage } from '../pages/view-old-responses-page/view-old-responses-page';
+
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password'
 import {Autosize} from 'ionic2-autosize';
 
 import * as firebase from 'firebase';
@@ -17,29 +25,46 @@ import * as firebase from 'firebase';
 
 @Component({
   templateUrl: 'app.html'
-  
+
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = HomePage;
+  rootPage: any;
+  zone: NgZone;
+
   pages: Array<{title: string, component: any}>;
 
   constructor(
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
-    public splashScreen: SplashScreen
-  ) 
-  {
+    public splashScreen: SplashScreen,
+  ) {
+
+    this.zone = new NgZone({});
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      this.zone.run( () => {
+        if (!user) {
+          this.rootPage = LoginPage;
+          unsubscribe();
+        } else {
+          this.rootPage = HomePage;
+          unsubscribe();
+        }
+      });
+    });
  
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
       { title: 'Track Argument', component: PromptsRootPage },
-      { title: 'Edit Prompts', component: PromptChoicesPage }
+      { title: 'Journal', component: JournalPage},
+      { title: 'Old Journals', component: OldJournalsPage },
+      { title: 'Edit Prompts', component: PromptChoicesPage },
+      { title: 'Old Responses', component: OldResponsesPage }
     ];
   }
 

@@ -13,12 +13,29 @@ import { SummaryPage } from '../pages/summary-page/summary-page';
 import { MantraPage } from '../pages/mantra-page/mantra-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { JournalPage } from '../pages/journal-page/journal-page';
+import { OldJournalsPage } from '../pages/view-old-journals-page/view-old-journals-page';
+import { OldResponsesPage } from '../pages/view-old-responses-page/view-old-responses-page';
+import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-page';
 
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
-import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page'; 
+import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
+
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
+import { ResetPasswordPage } from '../pages/reset-password/reset-password';
 
 import { ResponseButton } from '../components/response-button/response-button';
 import {Autosize} from 'ionic2-autosize';
+
+import { AuthData } from '../providers/auth-data';
+
+import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+
+const myFirebaseAuthConfig = {
+  provider: AuthProviders.Password,
+  method: AuthMethods.Password
+}
 
 @NgModule({
   declarations: [
@@ -27,17 +44,24 @@ import {Autosize} from 'ionic2-autosize';
     PromptsRootPage,
     PromptPage,
     SummaryPage,
+    JournalPage,
+    JournalDetailPage,
+    OldJournalsPage,
+    OldResponsesPage,
     MantraPage,
     ResponseButton,
     Autosize,
     PromptChoicesPage,
+    LoginPage,
+    SignupPage,
+    ResetPasswordPage,
     ResponseChoicesPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    FormsModule 
+    FormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -46,15 +70,23 @@ import {Autosize} from 'ionic2-autosize';
     PromptsRootPage,
     PromptPage,
     SummaryPage,
+    JournalPage,
+    JournalDetailPage,
+    OldJournalsPage,
+    OldResponsesPage,
     MantraPage,
     PromptChoicesPage,
     ResponseChoicesPage,
+    LoginPage,
+    SignupPage,
+    ResetPasswordPage,
     ResponseButton
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    AuthData
   ]
 })
 export class AppModule {}
