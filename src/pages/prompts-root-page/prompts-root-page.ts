@@ -32,7 +32,6 @@ export class PromptsRootPage {
   load() {
     this.promptService.fetchPrompts().then((prompts: Prompt[]) => {
       this.setPrompts(prompts);
-      console.log(prompts);
     });
   }
 

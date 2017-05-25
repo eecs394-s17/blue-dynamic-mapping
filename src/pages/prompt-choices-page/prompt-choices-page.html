@@ -1,12 +1,11 @@
-<ion-header no-border>
+<ion-header>
   <ion-navbar>
-<!--     <button ion-button menuToggle>
+    <ion-title>Edit Prompts</ion-title>
+    <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-    </button> -->
-    <!-- <ion-title></ion-title> -->
-    
+    </button>
+  </ion-navbar >
 
-  </ion-navbar>
 </ion-header>
 
 <ion-content style="background-color: #E8E8E8;">
@@ -14,7 +13,7 @@
   <ion-list>
 
       <button ion-item *ngFor="let p of prompts; let i = index" (click)="itemTapped($event, i)">
-        {{p.question}}
+        {{p.question_data.text}}
       </button>
 
     <!-- <p>

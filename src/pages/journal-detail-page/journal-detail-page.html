@@ -3,13 +3,24 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title> Journalling Page </ion-title>
+    <ion-title> Journalling Detail Page </ion-title>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content padding>
-  {{ getDay(journal) }} {{ getMonth(journal) }} at {{ getTime(journal) }} <br>
-  {{ journal.subject }} <br>
-  {{ journal.thougts }} 
+
+	<ion-card>
+
+	  <ion-item>
+	    <h2> {{ journal.subject }} </h2>
+	    <p> {{ getDay(journal) }} {{ getMonth(journal) }} at {{ getTime(journal) }} </p>
+	  </ion-item>
+
+	  <ion-card-content>
+	    <p> {{ journal.thougts }} </p>
+	  </ion-card-content>
+
+	</ion-card>
+
 </ion-content>

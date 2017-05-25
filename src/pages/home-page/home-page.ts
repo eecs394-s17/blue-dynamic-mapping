@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, App } from 'ionic-angular';
 import { PromptsRootPage } from '../prompts-root-page/prompts-root-page';
 
 import { SummaryPage } from '../summary-page/summary-page';
 import { JournalPage } from '../journal-page/journal-page';
 import { StorageService } from '../../providers/storage-service';
+
+import { AuthData } from '../../providers/auth-data';
+import { LoginPage } from '../login/login';
 
 @Component({
   selector: 'home-page',
@@ -20,7 +23,7 @@ export class HomePage {
     },
   ];
 
-  constructor(public navCtrl: NavController, private storageService: StorageService) {
+  constructor(public navCtrl: NavController, private storageService: StorageService, public authData: AuthData, public _app: App) {
 
   }
 
@@ -40,6 +43,11 @@ export class HomePage {
 
   pushJournalFeelings(event){
     this.navCtrl.push(JournalPage)
+  }
+
+  logOut(event){
+    this.authData.logoutUser();
+    this._app.getRootNav().setRoot(LoginPage);
   }
 
 
