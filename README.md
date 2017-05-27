@@ -17,3 +17,47 @@ Go back to the terminal and clone the GitHub repo
 ```bash
 $ git clone https://github.com/eecs394-s17/blue-dynamic-mapping.git
 ```
+
+Install Ionic 2
+
+```bash
+$ npm install -g cordova ionic
+```
+
+Navigate into the project folder
+
+```bash
+$ cd blue-dynamic-mapping
+```
+
+Install project dependencies
+```bash
+$ npm Install
+```
+
+Acquire the APP_SECRETS.js file and copy it to the main folder of the project ".../blue-dynamic-mapping/APP_SECRETS.js"
+
+Run the project
+```bash
+$ ionic serve
+```
+
+After this, the app should open for demo in your default web browser
+
+## Accessing the database
+
+Create an account at [Firebase](https://firebase.google.com/)
+
+Get an invite to the project from the database administrator
+
+## Changing prompts and answers
+
+--------------
+
+# For the next dev team
+
+## Known bugs
+
+When you navigate into the "Track Argument" feature, then hit the back button, it takes you to a blank "Home Page"
+
+## Structure of the project
