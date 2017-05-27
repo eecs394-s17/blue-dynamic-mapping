@@ -5,6 +5,7 @@ Dynamic mapping and integration is a form of couples counseling in which couples
 ## Getting the code and running locally
 
 Install Git
+
 https://git-scm.com/
 
 Install Node and NPM
