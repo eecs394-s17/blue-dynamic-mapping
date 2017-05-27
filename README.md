@@ -4,8 +4,16 @@ Dynamic mapping and integration is a form of couples counseling in which couples
 
 ## Getting the code and running locally
 
-Install [Git] (https://git-scm.com/)
+Install [Git](https://git-scm.com/)
 
-Install [Node (and concurrently NPM)] (https://nodejs.org/en/)
+Install [Node (and concurrently NPM)](https://nodejs.org/en/)
 
-Open terminal (on Mac) or command prompt (on Windows) and navigate to the location where you want to download the project.  Terminal tutorial [here] (https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855)
+Open terminal (on Mac) or command prompt (on Windows) and navigate to the location where you want to download the project.  Terminal tutorial [here](https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855). Some basic navigation commands will be different on Mac and Windows.
+
+Copy the link for this GitHub repo --image
+
+Go back to the terminal and clone the GitHub repo
+
+```bash
+$ git clone https://github.com/eecs394-s17/blue-dynamic-mapping.git
+```
