@@ -5,6 +5,7 @@ import { Prompt } from '../models/prompt';
 import { Responses } from '../models/responses';
 // import { ConfirmedResponses } from '../models/confirmed-response';
 
+import { AuthData } from './auth-data';
 
 import * as firebase from "firebase";
 import { FIREBASE_CONFIG } from "../../APP_SECRETS";
@@ -12,8 +13,12 @@ firebase.initializeApp(FIREBASE_CONFIG);
 
 @Injectable()
 export class PromptService {
+  constructor(private authData: AuthData) {
+
+  }
+
   getUserId() {
-    return '1';
+    return this.authData.getFirebaseId();
   }
 
   // getUserPrompts(): Promise<Prompt[]> {
@@ -135,7 +140,12 @@ export class PromptService {
   }
 
   async fetchActiveResponseMap() {
-    return this.fetchDataAtRef('/Users/' + this.getUserId() + '/' + 'ResponseChoices');
+    let active_response_map = await this.fetchDataAtRef('/Users/' + this.getUserId() + '/' + 'ResponseChoices');
+    if (!active_response_map) {
+      active_response_map = {};
+    }
+
+    return active_response_map;
   }
 
   generatePromptJSONS(prompt_map, question_map, response_map, active_response_map) {
