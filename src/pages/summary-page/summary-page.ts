@@ -46,7 +46,7 @@ export class SummaryPage {
 
     this.getUserResponses();
 
-    this.promptService.postArgumentTracking(this.responses_list);
+    // this.promptService.postArgumentTracking(this.responses_list);
 
 
 
