@@ -18,7 +18,7 @@ export class AuthData {
    */
   loginUser(email: string, password: string): firebase.Promise<any> {
     return firebase.auth().signInWithEmailAndPassword(email, password);
-    
+
   }
 
   /**
@@ -57,7 +57,7 @@ export class AuthData {
   }
 
   getFirebaseId() {
-    //console.log(firebase.auth().currentUser.uid);
+    // console.log(firebase.auth().currentUser.uid);
     return firebase.auth().currentUser.uid;
   }
 

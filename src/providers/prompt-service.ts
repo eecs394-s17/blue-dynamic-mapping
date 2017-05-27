@@ -5,6 +5,7 @@ import { Prompt } from '../models/prompt';
 import { Responses } from '../models/responses';
 // import { ConfirmedResponses } from '../models/confirmed-response';
 
+import { AuthData } from './auth-data';
 
 import * as firebase from "firebase";
 import { FIREBASE_CONFIG } from "../../APP_SECRETS";
@@ -12,8 +13,12 @@ firebase.initializeApp(FIREBASE_CONFIG);
 
 @Injectable()
 export class PromptService {
+  constructor(private authData: AuthData) {
+
+  }
+
   getUserId() {
-    return '1';
+    return this.authData.getFirebaseId();
   }
 
   // getUserPrompts(): Promise<Prompt[]> {
@@ -44,7 +49,7 @@ export class PromptService {
 
   getUserTimeStamps(){
     // let time_stamps = [];
-    return firebase.database().ref('/Users/1/PriorResponses').once('value').then((snapshot) => {
+    return firebase.database().ref('/Users/'+this.getUserId()+'/PriorResponses').once('value').then((snapshot) => {
         var time_stamps = snapshot.val();
         // console.log("getUserTimeStamps:"+Object.keys(time_stamps));
         return Object.keys(time_stamps);
@@ -59,11 +64,11 @@ export class PromptService {
     return p;
   }
 
-  postArgumentTracking(response){
-    firebase.database().ref('/Users/').child('1').child('1').set({
-      responses: response
-    });
-  }
+  // postArgumentTracking(response){
+  //   firebase.database().ref('/Users/').child('1').child('1').set({
+  //     responses: response
+  //   });
+  // }
 
 
   recordResponse(time_stamp, question, response){
@@ -75,12 +80,12 @@ export class PromptService {
       // console.log("time_stamps: "+time_stamps.indexOf("1494705326902"));
       if(time_stamps.indexOf(time_stamp.toString())<0){
         // console.log("not have this time_stamp!"+time_stamps.indexOf(time_stamp));
-        database.ref('/Users/1/PriorResponses').child(time_stamp).child(question).push(response);
+        database.ref('/Users/'+this.getUserId()+'/PriorResponses').child(time_stamp).child(question).push(response);
 
       }
       else{
         console.log("this time_stamp alreay exist!");
-        database.ref('/Users/1/PriorResponses'+time_stamp+"/").child(question).push(response);
+        database.ref('/Users/'+this.getUserId()+'/PriorResponses'+time_stamp+"/").child(question).push(response);
       }
     })
     // console.log("recordResponse:"+time_stamp+question+response);
@@ -89,10 +94,14 @@ export class PromptService {
   fetchOldResponses(time_stamp, question){
     // console.log("time_stamp: "+time_stamp);
     // console.log("question: "+question);
-    return firebase.database().ref('/Users/1/PriorResponses/'+time_stamp+'/'+question).once('value').then((snapshot) => {
+    return firebase.database().ref('/Users/'+this.getUserId()+'/PriorResponses/'+time_stamp+'/'+question).once('value').then((snapshot) => {
       var temp_list = snapshot.val();
       // console.log("temp_list: "+temp_list);
       // var list = Object.keys(temp_list);
+      if(temp_list == null || temp_list == undefined){
+        console.log(question+" no responses!");
+        return [];
+      }
       var responses_list = (<any>Object).values(temp_list);
       for(var i=0; i<responses_list.length; i++ ){
 
@@ -135,7 +144,12 @@ export class PromptService {
   }
 
   async fetchActiveResponseMap() {
-    return this.fetchDataAtRef('/Users/' + this.getUserId() + '/' + 'ResponseChoices');
+    let active_response_map = await this.fetchDataAtRef('/Users/' + this.getUserId() + '/' + 'ResponseChoices');
+    if (!active_response_map) {
+      active_response_map = {};
+    }
+
+    return active_response_map;
   }
 
   generatePromptJSONS(prompt_map, question_map, response_map, active_response_map) {
@@ -177,7 +191,7 @@ export class PromptService {
   async fetchQuestionAndResponseChoices() {
     let question_map = await this.fetchQuestionMap();
     let response_map = await this.fetchResponseMap();
-    let prompt_map = await this.fetchPromptMap();  
+    let prompt_map = await this.fetchPromptMap();
     let active_response_map = await this.fetchActiveResponseMap();
 
     let data = [];
@@ -193,8 +207,8 @@ export class PromptService {
       response_keys.forEach((key) => {
         let is_active = !(key in active_response_map && active_response_map[key] == false);
         response_data.push({
-            text:      response_map[key], 
-            key:       key, 
+            text:      response_map[key],
+            key:       key,
             is_active: is_active
           });
       });
