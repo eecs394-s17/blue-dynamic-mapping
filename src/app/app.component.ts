@@ -60,11 +60,10 @@ export class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Track Argument', component: PromptsRootPage },
-      { title: 'Journal', component: JournalPage},
+      { title: 'Home', component: HomePage },
       { title: 'Old Journals', component: OldJournalsPage },
-      { title: 'Edit Prompts', component: PromptChoicesPage },
-      { title: 'Old Responses', component: OldResponsesPage }
+      { title: 'Old Responses', component: OldResponsesPage },
+      { title: 'Edit Prompts', component: PromptChoicesPage }
     ];
   }
 
