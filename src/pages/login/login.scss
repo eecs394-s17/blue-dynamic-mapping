@@ -28,11 +28,27 @@ page-login {
   }
 
   form {
-    padding-top: 15%;
+    padding-top: 10%;
   }
 
   img {
     padding-top: 5%;
+  }
+
+  buttons {
+    padding-left: 10%;
+  }
+
+  loginButton {
+    padding-top: 70%;
+  }
+
+  signUp{
+    margin-left: 10px;
+  }
+
+  submitButton{
+    margin-top: 50px;
   }
 
 }

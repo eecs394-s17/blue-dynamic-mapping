@@ -16,26 +16,13 @@ import { LoginPage } from '../login/login';
 })
 export class HomePage {
   // use code from https://github.com/driftyco/ionic-preview-app/tree/master/src/pages/slides/basic
-  slides = [
-    {
-      title: "Welcome to the Dynamic Mapping!",
-      description: "Dynamic mapping and integration is a form of couples counseling in which couples create a map of their relationship dynamic as a tool to identify, heal and improve problem areas of the relationship. The map includes elements from each person’s family of origin, communication styles, conflict areas and reactions, strength, vulnerabilities and goals. Couples collaboratively and compassionately integrate new awarenesses, tools and healthy new pathways to create a happier and peaceful relationship.",
-    },
-  ];
+  title = "Welcome to Dynamic Mapping!";
+  description = "Dynamic mapping and integration is a form of couples counseling in which couples create a map of their relationship dynamic as a tool to identify, heal and improve problem areas of the relationship. The map includes elements from each person’s family of origin, communication styles, conflict areas and reactions, strength, vulnerabilities and goals. Couples collaboratively and compassionately integrate new awarenesses, tools and healthy new pathways to create a happier and peaceful relationship.";
 
   constructor(public navCtrl: NavController, private storageService: StorageService, public authData: AuthData, public _app: App) {
 
   }
 
-  // pushSummary(event) {
-  //   this.storageService.getMostRecentReponse().then((data) => {
-  //     console.log(data);
-  //     this.navCtrl.push(SummaryPage, {
-  //         prompts: data.getItem('prompts'),
-  //         responses: data.getItem('responses')
-  //       });
-  //   });
-  // }
 
   pushTrackArgument(event){
   	this.navCtrl.push(PromptsRootPage);
