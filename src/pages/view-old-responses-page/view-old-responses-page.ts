@@ -23,7 +23,12 @@ export class OldResponsesPage {
   load(){
 
     this.promptService.getUserTimeStamps().then((data) => {
-      this.time_stamps = data;
+      if(data == undefined){
+        this.time_stamps = [];
+      }
+      else{
+        this.time_stamps = data;
+      }
     });
 
 

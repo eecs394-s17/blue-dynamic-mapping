@@ -51,8 +51,14 @@ export class PromptService {
     // let time_stamps = [];
     return firebase.database().ref('/Users/'+this.getUserId()+'/PriorResponses').once('value').then((snapshot) => {
         var time_stamps = snapshot.val();
+        console.log("getUserTimeStamps: "+time_stamps);
+        if(time_stamps == null){
+          return undefined;
+        }
         // console.log("getUserTimeStamps:"+Object.keys(time_stamps));
-        return Object.keys(time_stamps);
+        else{
+          return Object.keys(time_stamps);
+        }
     })
   }
 
@@ -113,7 +119,10 @@ export class PromptService {
   }
 
   fetchOldQuestions(time_stamp){
-
+    return firebase.database().ref('Users/'+this.getUserId()+'/PriorResponses/'+time_stamp).once('value').then((snapshot) => {
+      // console.log("fetchOldQuestions: "+Object.keys(snapshot.val()));
+      return Object.keys(snapshot.val());
+    })
   }
 
 
