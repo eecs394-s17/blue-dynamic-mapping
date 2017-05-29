@@ -84,9 +84,10 @@ export class PromptService {
       // console.log(time_stamps);
       // console.log(time_stamp.toString());
       // console.log("time_stamps: "+time_stamps.indexOf("1494705326902"));
-      if(time_stamps.indexOf(time_stamp.toString())<0){
+      if(time_stamps == null || time_stamps.indexOf(time_stamp.toString())<0){
         // console.log("not have this time_stamp!"+time_stamps.indexOf(time_stamp));
-        database.ref('/Users/'+this.getUserId()+'/PriorResponses').child(time_stamp).child(question).push(response);
+        // database.ref('/Users/'+this.getUserId()+'/PriorResponses').child(time_stamp).child(question).push(response);
+        database.ref('/Users/'+this.getUserId()).child('PriorResponses').child(time_stamp).child(question).push(response);
 
       }
       else{
