@@ -22,7 +22,7 @@ export class MantraPage {
 	mantra: string;
 
 	prompts: Prompt[];
-  	responses_list = [];
+  responses_list = [];
 	responses: any;
   time_stamp: any;
 
@@ -31,7 +31,7 @@ export class MantraPage {
   		this.can_go_back = !this.first;
   		this.can_go_next = true;
 
-		this.responses = {};
+		  this.responses = {};
 
     	this.prompts = this.navParams.get('prompts');
     	this.responses = this.navParams.get('responses');
@@ -43,7 +43,7 @@ export class MantraPage {
   	}
 
   	nextText() {
-  		return this.last ? 'Finish' : 'Next';
+  		return 'Finish';
   	}
 
   	mantraEntered(enteredMantra){

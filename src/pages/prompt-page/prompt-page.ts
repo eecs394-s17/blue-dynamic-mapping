@@ -37,7 +37,7 @@ export class PromptPage {
   	}
 
   	nextText() {
-  		return this.last ? 'Finish' : 'Next';
+  		return 'Next';
   	}
 
   	responseSelected = (response, selected) => {

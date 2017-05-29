@@ -23,8 +23,7 @@ export class PromptsRootPage {
 
   constructor(public navCtrl: NavController, private promptService: PromptService, private storageService: StorageService) {
     this.load();
-    this.responses = {};
-    // this.time_stamp = Math.floor(Date.now());
+    this.responses = {};  
     this.time_stamp = Math.round((new Date()).getTime() / 1000);
     console.log("root time:" + this.time_stamp);
   }
@@ -42,17 +41,23 @@ export class PromptsRootPage {
   }
 
   displayNextPrompt() {
-    this.navCtrl.push(PromptPage, {
+    this.navCtrl.setRoot(PromptPage, {
       prompt: this.prompts[this.current_prompt_index],
       first: this.current_prompt_index == 0,
-      last: this.current_prompt_index == this.prompts.length - 1,
+      last: this.current_prompt_index == this.prompts.length-1,
       time_stamp: this.time_stamp,
       callback: this.promptCallback
     });
   }
 
   displayPrevPrompt() {
-    this.navCtrl.pop();
+    this.navCtrl.setRoot(PromptPage, {
+      prompt: this.prompts[this.current_prompt_index],
+      first: this.current_prompt_index == 0,
+      last: this.current_prompt_index == this.prompts.length-1,
+      time_stamp: this.time_stamp,
+      callback: this.promptCallback
+    });
   }
 
   promptCallback = (responses, forward) => {
@@ -64,13 +69,6 @@ export class PromptsRootPage {
         this.current_prompt_index--;
         this.displayPrevPrompt();
       } else {
-        // this.storageService.saveMostRecentResponse(this.prompts, this.responses).then((res) => {
-        //   console.log(res);
-        //   this.storageService.getMostRecentReponse().then((res) => {
-        //     console.log(res);
-        //   });
-        // });
-
         this.navCtrl.push(MantraPage, {
           prompts: this.prompts,
           responses: this.responses,
