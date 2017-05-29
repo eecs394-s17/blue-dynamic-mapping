@@ -33,7 +33,7 @@ Install project dependencies.
 ```bash
 $ npm install
 ```
-z
+
 Acquire the APP_SECRETS.js file and copy it to the main folder of the project ".../blue-dynamic-mapping/APP_SECRETS.js"
 
 Run the project.
