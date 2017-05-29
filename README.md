@@ -1,54 +1,53 @@
 # Dynamic Mapping
 
-Dynamic mapping and integration is a form of couples counseling in which couples create a map of their relationship dynamic as a tool to identify, heal and improve problem areas of the relationship. The map includes elements from each person’s family of origin, communication styles, conflict areas and reactions, strength, vulnerabilities and goals. Couples collaboratively and compassionately integrate new awarenesses, tools and healthy new pathways to create a happier and peaceful relationship.
+Dynamic mapping and integration couple’s counseling helps couples identify and create
+balance in the dynamic of their relationship. The dynamic is the pattern of the interaction of thoughts feelings and actions in a relationship. Understanding comes through discovering how information from their past, approach to conflict, communication styles and love languages interact with and effect their partner and the relationship. This app will assist you in your understanding of the dynamic map. You will track your conflict with your partner. this will allow you to better identify patterns as well as what works and doesn’t work. In addition, you will be given prompts that will allow you to address current conflict in a more successful way thus decreasing the time spent in states of hurt, anger and resentment. Following the prompts that you collaboratively help to set, you will have more success navigating conflict areas of the relationship and have more happiness and peace.
 
 ## Getting the code and running locally
 
-Install [Git](https://git-scm.com/)
+Install [Git](https://git-scm.com/).
 
-Install [Node (and concurrently NPM)](https://nodejs.org/en/)
+Install [Node (and concurrently NPM)](https://nodejs.org/en/).
 
 Open terminal (on Mac) or command prompt (on Windows) and navigate to the location where you want to download the project.  Terminal tutorial [here](https://computers.tutsplus.com/tutorials/navigating-the-terminal-a-gentle-introduction--mac-3855). Some basic navigation commands will be different on Mac and Windows.
 
-Copy the link for this GitHub repo --image
-
-Go back to the terminal and clone the GitHub repo
+Go back to the terminal and clone this GitHub repo.
 
 ```bash
 $ git clone https://github.com/eecs394-s17/blue-dynamic-mapping.git
 ```
 
-Install Ionic 2
+Install Ionic 2.
 
 ```bash
 $ npm install -g cordova ionic
 ```
 
-Navigate into the project folder
+Navigate into the project folder.
 
 ```bash
 $ cd blue-dynamic-mapping
 ```
 
-Install project dependencies
+Install project dependencies.
 ```bash
 $ npm Install
 ```
 
 Acquire the APP_SECRETS.js file and copy it to the main folder of the project ".../blue-dynamic-mapping/APP_SECRETS.js"
 
-Run the project
+Run the project.
 ```bash
 $ ionic serve
 ```
 
-After this, the app should open for demo in your default web browser
+After this, the app should open for demo in your default web browser.
 
 ## Accessing the database
 
-Create an account at [Firebase](https://firebase.google.com/)
+Create an account at [Firebase](https://firebase.google.com/).
 
-Get an invite to the project from the database administrator
+Get an invite to the project from the database administrator.
 
 ## Changing prompts and answers in Firebase
 
