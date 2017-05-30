@@ -16,18 +16,18 @@
 // automatically applied to the <body> element in the app.
 
 .text-input::-moz-placeholder {
-  color: white;
+  color: black;
 }
 
 .text-input:-ms-input-placeholder {
-  color: white;
+  color: black;
 }
 
 .text-input::-webkit-input-placeholder {
   text-indent: 0;
-  color: white;
+  color: black;
 }
 
 .toolbar-background{
-  background-color: #eeeeee
+  background-color: #3949AB
 }
