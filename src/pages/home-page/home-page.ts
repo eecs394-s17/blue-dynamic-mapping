@@ -27,16 +27,6 @@ export class HomePage {
 
   }
 
-  // pushSummary(event) {
-  //   this.storageService.getMostRecentReponse().then((data) => {
-  //     console.log(data);
-  //     this.navCtrl.push(SummaryPage, {
-  //         prompts: data.getItem('prompts'),
-  //         responses: data.getItem('responses')
-  //       });
-  //   });
-  // }
-
   pushTrackArgument(event){
   	this.navCtrl.push(PromptsRootPage);
   }
