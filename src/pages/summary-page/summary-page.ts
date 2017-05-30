@@ -15,7 +15,7 @@ import { HomePage } from '../home-page/home-page';
 export class SummaryPage {
   prompts: Prompt[];
   responses_list = [];
-  mantra: string;
+  //mantra: string;
   received_responses: any;
   current_prompt_index: number;
   time_stamp: any;
@@ -25,7 +25,7 @@ export class SummaryPage {
 
     this.prompts = this.navParams.get('prompts');
     this.received_responses = this.navParams.get('responses');
-    this.mantra = this.navParams.get('mantra');
+    //this.mantra = this.navParams.get('mantra');
     this.time_stamp = this.navParams.get('time_stamp');
     this.load();
     // for(var i=0;i<this.prompts.length;i++){

@@ -7,6 +7,7 @@ import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-p
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
 import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
+import { ReminderPage } from '../pages/reminder-page/reminder-page';
 import { MantraPage } from '../pages/mantra-page/mantra-page';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
