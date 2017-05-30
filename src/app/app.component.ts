@@ -19,7 +19,7 @@ import { OldResponsesPage } from '../pages/view-old-responses-page/view-old-resp
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { ResetPasswordPage } from '../pages/reset-password/reset-password'
-import {Autosize} from 'ionic2-autosize';
+import { Autosize} from 'ionic2-autosize';
 
 import * as firebase from 'firebase';
 
