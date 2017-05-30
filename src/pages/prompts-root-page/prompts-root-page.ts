@@ -8,6 +8,7 @@ import { Prompt } from '../../models/prompt';
 import { PromptPage } from '../prompt-page/prompt-page';
 import { SummaryPage } from '../summary-page/summary-page';
 import { MantraPage } from '../mantra-page/mantra-page';
+import { ReminderPage } from '../reminder-page/reminder-page';
 
 @Component({
   selector: 'prompts-root-page',
@@ -69,7 +70,7 @@ export class PromptsRootPage {
         this.current_prompt_index--;
         this.displayPrevPrompt();
       } else {
-        this.navCtrl.push(MantraPage, {
+        this.navCtrl.push(ReminderPage, {
           prompts: this.prompts,
           responses: this.responses,
           time_stamp: this.time_stamp

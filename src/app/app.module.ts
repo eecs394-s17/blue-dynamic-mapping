@@ -20,6 +20,7 @@ import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-p
 import { OldResponsesDetailPage } from '../pages/old-responses-detail-page/old-responses-detail-page';
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
+import { ReminderPage } from '../pages/reminder-page/reminder-page';
 
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -50,6 +51,7 @@ const myFirebaseAuthConfig = {
     OldResponsesPage,
     OldResponsesDetailPage,
     MantraPage,
+    ReminderPage,
     ResponseButton,
     Autosize,
     PromptChoicesPage,
@@ -77,6 +79,7 @@ const myFirebaseAuthConfig = {
     OldResponsesPage,
     OldResponsesDetailPage,
     MantraPage,
+    ReminderPage,
     PromptChoicesPage,
     ResponseChoicesPage,
     LoginPage,
