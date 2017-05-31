@@ -11,17 +11,13 @@
 <ion-content>
 
 <ion-list class="outer-content">
-  <ion-list-header> JOURNAL ENTRIES </ion-list-header>
+  <ion-list-header style="background-color: #E8E8E8;"> JOURNAL ENTRIES </ion-list-header>
   <ion-item-sliding *ngFor="let journal of journals">
-    <ion-item>
+    <ion-item (click)="expandEntry(journal)">
       <h3> {{journal.subject}} </h3>
       <p> {{getDay(journal)}} {{getMonth(journal)}} at {{getTime(journal)}} </p> 
     </ion-item> 
     <ion-item-options>
-      <button ion-button color="light" (click)="expandEntry(journal)" icon-left>
-        <ion-icon name="ios-more"></ion-icon>
-        Expand
-      </button>
       <button ion-button color="primary" (click)="removeJournalEntry(journal)" icon-left>
         <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         Delete
@@ -32,15 +28,3 @@
 </ion-list>
 
 </ion-content>
-<!-- 
-      <ion-row align-items-start>
-        <ion-col col-9>
-          <div class="expandEntry" (click)="expandEntry(journal)">
-              <p class = "subjectLine"> {{journal.subject}} </p>
-              <p class = "dates" > {{getDay(journal)}} {{getMonth(journal)}} at {{getTime(journal)}} </p>
-          </div>
-        </ion-col>
-        <ion-col offset-2>
-          <ion-icon (click)="removeJournalEntry(journal)" ios="ios-trash" md="md-trash"></ion-icon>
-        </ion-col>
-      </ion-row> -->

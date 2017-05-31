@@ -29,7 +29,7 @@ export class JournalPage {
   storeJournal(){
     this.dateTime = Math.round((new Date()).getTime() / 1000)
     this.storageService.saveMostRecentJournalEntry(this.dateTime, this.journalForm.value.subject, this.journalForm.value.thoughts). then((res) => {
-      this.navCtrl.push(OldJournalsPage)
+      this.navCtrl.setRoot(OldJournalsPage)
     });
 
   }

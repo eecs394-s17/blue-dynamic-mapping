@@ -11,18 +11,12 @@
 <ion-content>
 
 <ion-list>
-  <ion-list-header> PAST ARGUMENTS </ion-list-header>
+  <ion-list-header style="background-color: #E8E8E8;"> PAST ARGUMENTS </ion-list-header>
 
   <ion-item-sliding *ngFor="let time_stamp of time_stamps">
-    <ion-item> 
+    <ion-item (click)="expandEntry(time_stamp)"> 
       Argument on {{getDay(time_stamp)}} {{getMonth(time_stamp)}} at {{getTime(time_stamp)}} 
     </ion-item>
-    <ion-item-options>
-      <button (click)="expandEntry(time_stamp)" ion-button color="light" icon-left>
-        <ion-icon name="ios-more"></ion-icon>
-        Expand
-      </button>
-    </ion-item-options>
   </ion-item-sliding>
 </ion-list>
 
