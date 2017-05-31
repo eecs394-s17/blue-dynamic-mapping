@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoadingController } from 'ionic-angular';
 import { NavController, App } from 'ionic-angular';
 import { PromptsRootPage } from '../prompts-root-page/prompts-root-page';
 
@@ -23,11 +24,13 @@ export class HomePage {
     }
   ];
 
-  constructor(public navCtrl: NavController, private storageService: StorageService, public authData: AuthData, public _app: App) {
+  constructor(public navCtrl: NavController, public loadingCtrl: LoadingController, private storageService: StorageService, public authData: AuthData, public _app: App) {
 
   }
 
+
   pushTrackArgument(event){
+    this.presentLoading();
   	this.navCtrl.push(PromptsRootPage);
   }
 
@@ -35,10 +38,14 @@ export class HomePage {
     this.navCtrl.push(JournalPage)
   }
 
-  logOut(event){
-    this.authData.logoutUser();
-    this._app.getRootNav().setRoot(LoginPage);
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 300
+    });
+    loader.present();
   }
+
 
 
 }

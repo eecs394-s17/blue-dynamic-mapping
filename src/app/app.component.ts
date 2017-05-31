@@ -1,6 +1,6 @@
 import { Component, ViewChild, NgZone } from '@angular/core';
-
-import { Platform, MenuController, Nav } from 'ionic-angular';
+import { Platform, MenuController, Nav, AlertController } from 'ionic-angular';
+import { AuthData } from '../providers/auth-data';
 
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
@@ -42,6 +42,8 @@ export class MyApp {
     public menu: MenuController,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
+    public authData: AuthData,
+    public alertCtrl: AlertController
   ) {
 
     this.zone = new NgZone({});
@@ -84,4 +86,29 @@ export class MyApp {
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+
+  presentLogout() { ///<-- call this function straight with static button in html
+    let alert = this.alertCtrl.create({
+      title: 'Confirm Log Out',
+      message: 'Are you sure you want to log out?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Log Out',
+          handler: ()=> {
+            this.authData.logoutUser(); 
+            this.nav.setRoot(LoginPage);
+          }
+        }
+      ]
+    });
+    alert.present();
+    this.menu.close();
+}
 }

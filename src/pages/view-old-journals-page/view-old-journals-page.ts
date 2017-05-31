@@ -22,7 +22,11 @@ export class OldJournalsPage {
   load(){
 
     this.storageService.getAllJournalEntries().then( (data) => {
-      this.journals = data;
+      console.log(data);
+      
+      this.journals = data.sort(function(a, b){
+        return b.timestamp-a.timestamp
+      });
     });
 
   }
