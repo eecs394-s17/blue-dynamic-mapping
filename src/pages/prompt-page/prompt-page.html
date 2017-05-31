@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-navbar color="primary" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); ">
-    <ion-title style="font-weight: 300 !importatnt">Dynamic Mapping</ion-title>
+    <ion-title>Dynamic Mapping</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,7 +10,7 @@
 
 
 <ion-content padding style="background-color: #fafafa">
-  <p class="question">{{prompt.question}}</p>
+  <h3 class="question">{{prompt.question}}</h3>
   <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
   <button ion-button round
     *ngFor="let r of prompt.responses"
@@ -19,13 +19,13 @@
     align-center style="min-width: 100%">{{r}}</button>
 
 </ion-content>
-<ion-footer color="footer">
+<ion-footer>
 
-
-  <ion-toolbar>
+  <ion-toolbar color="footer">
     <ion-buttons left> 
       <button ion-button style="font-size = 1.5em" *ngIf="!can_go_back" clear ion-button (click)="returnHome()"> Cancel </button>
     </ion-buttons>
+
     <ion-buttons left>
       <button ion-button style="font-size = 1.5em; color: white" *ngIf="can_go_back" clear ion-button (click)="backAction($event)" >Back</button>
     </ion-buttons>
