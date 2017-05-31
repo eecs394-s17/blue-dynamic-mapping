@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-navbar>
+<ion-header color="primary">
+  <ion-navbar color="primary">
     <ion-title>Dynamic Mapping</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -8,10 +8,10 @@
 </ion-header>
 
 <ion-content padding style="background-color: white">
-  <h3 style="color: black">{{prompt.question}}</h3>
+  <ion-label text-wrap style="font-size: 20px; color: #212121; font-family: roboto">{{prompt.question}}</ion-label>
   <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button>
 </ion-content>
-<ion-footer style="background-color: #FFFFFF">
+<ion-footer style="background-color: #FF8A65">
 
   <ion-toolbar>
     <ion-buttons left>
