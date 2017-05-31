@@ -10,11 +10,11 @@
 <ion-content padding>
   <h3>{{prompt.question}}</h3>
   <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
-  <button ion-button round
+  <button ion-button
     *ngFor="let r of prompt.responses"
     [outline]="!selected_responses.has(r)"
     (click)="select_ans(r)"
-    align-center style="min-width: 95%">{{r}}</button>
+    align-center style="min-width: 100%">{{r}}</button>
 </ion-content>
 <ion-footer style="background-color: #FFFFFF">
 
