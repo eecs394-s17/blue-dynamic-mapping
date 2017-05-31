@@ -27,7 +27,7 @@ export class OldResponsesPage {
         this.time_stamps = [];
       }
       else{
-        this.time_stamps = data;
+        this.time_stamps = data.reverse();
       }
     });
 
