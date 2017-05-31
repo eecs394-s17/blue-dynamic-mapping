@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { StorageService } from '../../providers/storage-service';
 import { Prompt } from '../../models/prompt';
@@ -15,7 +15,7 @@ import * as moment from 'moment';
 export class OldJournalsPage {
   journals: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private storageService: StorageService) {
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController, public navParams: NavParams, private storageService: StorageService) {
     this.load()
   }
 
@@ -42,10 +42,31 @@ export class OldJournalsPage {
   }
 
   removeJournalEntry(j){
-    this.storageService.removeJournalEntry(j).then( () => {
-      this.load();
+      let alert = this.alertCtrl.create({
+      title: 'Confirm Delete Entry',
+      message: 'Are you sure you want to delete this entry?',
+      buttons: [
+        {
+          text: 'No',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Yes',
+          handler: ()=> {
+            this.storageService.removeJournalEntry(j).then( () => {
+              this.load();
+            });
+          }
+        }
+      ]
     });
+    alert.present();
   }
+
+
 
   expandEntry(j){
     this.navCtrl.push(JournalDetailPage, {

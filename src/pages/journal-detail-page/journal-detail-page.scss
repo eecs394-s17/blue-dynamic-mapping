@@ -14,8 +14,9 @@ journal-detail-page{
   	margin-top: 5%;
   }
 
-  .slide-title {
-    margin-top: 2.8rem;
+  .title{
+    color: map-get($colors, primary);
+    font-weight: bold;
   }
 
 }

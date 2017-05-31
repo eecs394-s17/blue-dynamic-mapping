@@ -8,21 +8,17 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
 <ion-list>
-  <ion-item *ngFor="let time_stamp of time_stamps">
-    <ion-label>
-      <ion-row align-items-start>
-        <ion-col col-auto>
-          <div class="expandEntry" (click)="expandEntry(time_stamp)">
-              <p class = "subjectLine" > {{getDay(time_stamp)}} {{getMonth(time_stamp)}} at {{getTime(time_stamp)}} </p>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-label>
+  <ion-list-header style="background-color: #E8E8E8;"> PAST ARGUMENTS </ion-list-header>
 
-  </ion-item>
+  <ion-item-sliding *ngFor="let time_stamp of time_stamps">
+    <ion-item (click)="expandEntry(time_stamp)"> 
+      Argument on {{getDay(time_stamp)}} {{getMonth(time_stamp)}} at {{getTime(time_stamp)}} 
+    </ion-item>
+  </ion-item-sliding>
 </ion-list>
 
 </ion-content>
+
