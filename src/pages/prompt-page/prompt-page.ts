@@ -52,7 +52,12 @@ export class PromptPage {
   	}
 
     select_ans(response) {
-      this.selected_responses.add(response);
+      if(this.selected_responses.has(response)){
+        this.selected_responses.delete(response);
+      }
+      else{
+        this.selected_responses.add(response);
+      }
     }
 
 
