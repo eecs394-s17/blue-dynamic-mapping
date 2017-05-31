@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -8,11 +8,11 @@
 </ion-header>
 
 
-<ion-content padding style="background-color: #4990E2">
-  <h3  style="color: white; margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of prompts; let i = index"> {{p.question}}
+<ion-content padding>
+  <h3  style="color: black; margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of prompts; let i = index"> {{p.question}}
     <br />
-      <h6 class="borderexample" *ngFor="let op of responses_list[i]; let j = index"> {{op}} </h6>
-
+    <button ion-button round outline 
+    *ngFor="let op of responses_list[i]; let j = index" align-center>{{op}}</button>
   </h3>
 
 
