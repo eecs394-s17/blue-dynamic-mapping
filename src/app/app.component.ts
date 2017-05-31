@@ -64,9 +64,9 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: HomePage }, 
-      { title: 'View Old Journals', component: OldJournalsPage },
-      { title: 'View Old Responses', component: OldResponsesPage },
-      { title: 'Edit Prompts', component: PromptChoicesPage }
+      { title: 'Journals', component: OldJournalsPage },
+      { title: 'Track Past Arguments', component: OldResponsesPage },
+      { title: 'Prompts', component: PromptChoicesPage }
 
     ];
   }
@@ -102,13 +102,14 @@ export class MyApp {
         {
           text: 'Log Out',
           handler: ()=> {
-            this.authData.logoutUser(); 
+            this.authData.logoutUser();
+            this.menu.close(); 
             this.nav.setRoot(LoginPage);
           }
         }
       ]
     });
     alert.present();
-    this.menu.close();
-}
+  }
+
 }

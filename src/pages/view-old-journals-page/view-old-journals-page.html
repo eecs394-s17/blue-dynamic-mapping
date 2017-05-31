@@ -3,16 +3,36 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title> Old Journals Page </ion-title>
+    <ion-title> Old Journals </ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
 
-<ion-list>
-  <ion-item class="border" *ngFor="let journal of journals">
-    <ion-label> 
+<ion-list class="outer-content">
+  <ion-list-header> JOURNAL ENTRIES </ion-list-header>
+  <ion-item-sliding *ngFor="let journal of journals">
+    <ion-item>
+      <h3> {{journal.subject}} </h3>
+      <p> {{getDay(journal)}} {{getMonth(journal)}} at {{getTime(journal)}} </p> 
+    </ion-item> 
+    <ion-item-options>
+      <button ion-button color="light" (click)="expandEntry(journal)" icon-left>
+        <ion-icon name="ios-more"></ion-icon>
+        Expand
+      </button>
+      <button ion-button color="primary" (click)="removeJournalEntry(journal)" icon-left>
+        <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+    
+  </ion-item-sliding>
+</ion-list>
+
+</ion-content>
+<!-- 
       <ion-row align-items-start>
         <ion-col col-9>
           <div class="expandEntry" (click)="expandEntry(journal)">
@@ -23,10 +43,4 @@
         <ion-col offset-2>
           <ion-icon (click)="removeJournalEntry(journal)" ios="ios-trash" md="md-trash"></ion-icon>
         </ion-col>
-      </ion-row>
-    </ion-label> 
-    
-  </ion-item>
-</ion-list>
-
-</ion-content>
+      </ion-row> -->
