@@ -5,6 +5,7 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
+import { LoveLanguageChoicesPage } from '../pages/love-language-choices-page/love-language-choices-page';
 import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { ReminderPage } from '../pages/reminder-page/reminder-page';
@@ -56,12 +57,12 @@ export class MyApp {
         }
       });
     });
- 
+
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Home', component: HomePage }, 
+      { title: 'Home', component: HomePage },
       { title: 'View Old Journals', component: OldJournalsPage },
       { title: 'View Old Responses', component: OldResponsesPage },
       { title: 'Edit Prompts', component: PromptChoicesPage }

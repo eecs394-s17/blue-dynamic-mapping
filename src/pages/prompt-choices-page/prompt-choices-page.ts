@@ -7,6 +7,7 @@ import { StorageService } from '../../providers/storage-service';
 import { Prompt } from '../../models/prompt';
 import { PromptPage } from '../prompt-page/prompt-page';
 import { ResponseChoicesPage } from '../response-choices-page/response-choices-page';
+import { LoveLanguageChoicesPage } from '../love-language-choices-page/love-language-choices-page';
 
 @Component({
   selector: 'prompt-choices-page',
@@ -17,6 +18,8 @@ import { ResponseChoicesPage } from '../response-choices-page/response-choices-p
 export class PromptChoicesPage {
   prompts: any[];
   responses: any;
+  love_language_list: string[];
+  love_language_data: any[];
   //current_prompt_index: number;
   //time_stamp: any;
 
@@ -64,4 +67,16 @@ export class PromptChoicesPage {
   promptCallback = (forward) => {
       this.load();
     }
+
+  chooseLoveLanguage(){
+    this.promptService.fetAllLoveLanguage().then((love_language_list) => {
+      // console.log("LoveLanguage: "+list);
+      this.love_language_list = love_language_list;
+      // console.log("love_language_list: "+ this.love_language_list);
+      this.navCtrl.push(LoveLanguageChoicesPage, {
+        love_languages: this.love_language_list,
+        callback: this.promptCallback
+      });
+    })
+  }
 }

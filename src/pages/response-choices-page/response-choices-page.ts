@@ -26,7 +26,7 @@ export class ResponseChoicesPage {
     this.responses = this.navParams.get('responses');
     this.callback = navParams.get('callback');
     this.load();
-    
+
     //this.time_stamp = Math.floor(Date.now());
     //console.log("root time:" + this.time_stamp);
   }
