@@ -242,27 +242,7 @@ export class PromptService {
   async fetAllLoveLanguage(){
     return firebase.database().ref('/LoveLanguage').once('value').then((snapshot) => {
       let love_language_list = Object.keys(snapshot.val());
-      // let love_language_data = [];
-      // for(var i=0; i<love_language_list.length; i++){
-        // console.log("love_language_list "+i+": "+love_language_list[i]);
-        // console.log("isLoveLanguageSelected: "+this.isLoveLanguageSelected(love_language_list[i]));
-        // this.isLoveLanguageSelected(love_language_list[i]).then((selected) => {
-        //   love_language_data.push({
-        //     is_active:      selected,
-        //     love_language:  love_language_list[i]
-        //   });
-        //   // console.log("love_language_data "+i+": "+love_language_data[i].love_language+" "+love_language_data[i].is_active);
-        //   // console.log("love_language 0"+love_language_data[0].love_language+" "+love_language_data[0].is_active);
-        //   // console.log("love_language 1"+love_language_data[1].love_language+" "+love_language_data[1].is_active);
-        //   // console.log("love_language 2"+love_language_data[2].love_language+" "+love_language_data[2].is_active);
-        //   // console.log("love_language 3"+love_language_data[3].love_language+" "+love_language_data[3].is_active);
-        //   // console.log("love_language 4"+love_language_data[4].love_language+" "+love_language_data[4].is_active);
-        // });
 
-
-
-
-      // }
       return love_language_list;
 
     })
@@ -279,6 +259,13 @@ export class PromptService {
         // console.log("true");
         return true;
       }
+    })
+  }
+
+  async getLoveLanguageURL(love_language){
+    return firebase.database().ref('/LoveLanguage').child(love_language).once('value').then((snapshot) => {
+      // console.log(snapshot.val());
+      return snapshot.val();
     })
   }
 
