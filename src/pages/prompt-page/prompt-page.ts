@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController} from 'ionic-angular';
 
+import { HomePage } from '../home-page/home-page';
 import { Prompt } from '../../models/prompt';
 import { PromptService } from '../../providers/prompt-service'
 
@@ -60,7 +61,9 @@ export class PromptPage {
       }
     }
 
-
+    returnHome(){
+      this.navController.setRoot(HomePage);
+    }
 
   	backAction(event) {
   		this.callback(this.selected_responses, false);
