@@ -1,4 +1,5 @@
-<ion-header color="primary">
+
+<ion-header>
   <ion-navbar color="primary">
     <ion-title>Dynamic Mapping</ion-title>
     <button ion-button menuToggle>
@@ -7,9 +8,16 @@
   </ion-navbar >
 </ion-header>
 
-<ion-content padding style="background-color: white">
-  <ion-label text-wrap style="font-size: 20px; color: #212121; font-family: roboto">{{prompt.question}}</ion-label>
-  <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button>
+
+<ion-content padding>
+  <h3>{{prompt.question}}</h3>
+  <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
+  <button ion-button round
+    *ngFor="let r of prompt.responses"
+    [outline]="!selected_responses.has(r)"
+    (click)="select_ans(r)"
+    align-center style="min-width: 95%">{{r}}</button>
+
 </ion-content>
 <ion-footer style="background-color: #FF8A65">
 
