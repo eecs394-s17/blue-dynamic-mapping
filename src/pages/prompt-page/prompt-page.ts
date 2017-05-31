@@ -51,6 +51,10 @@ export class PromptPage {
   		}
   	}
 
+    select_ans(response) {
+      this.selected_responses.add(response);
+    }
+
 
 
   	backAction(event) {
