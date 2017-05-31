@@ -20,6 +20,7 @@ import { JournalDetailPage } from '../pages/journal-detail-page/journal-detail-p
 import { OldResponsesDetailPage } from '../pages/old-responses-detail-page/old-responses-detail-page';
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
+import { LoveLanguageChoicesPage } from '../pages/love-language-choices-page/love-language-choices-page';
 import { ReminderPage } from '../pages/reminder-page/reminder-page';
 
 import { LoginPage } from '../pages/login/login';
@@ -58,7 +59,8 @@ const myFirebaseAuthConfig = {
     LoginPage,
     SignupPage,
     ResetPasswordPage,
-    ResponseChoicesPage
+    ResponseChoicesPage,
+    LoveLanguageChoicesPage
   ],
   imports: [
     IonicStorageModule.forRoot(),
@@ -82,6 +84,7 @@ const myFirebaseAuthConfig = {
     ReminderPage,
     PromptChoicesPage,
     ResponseChoicesPage,
+    LoveLanguageChoicesPage,
     LoginPage,
     SignupPage,
     ResetPasswordPage,

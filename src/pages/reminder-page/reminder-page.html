@@ -7,16 +7,16 @@
   </ion-navbar >
 </ion-header>
 
-<ion-content padding style="background-color: #4990E2">
-  <h3 style="color: white">Reminder, your partner's love language is:</h3>
-  
-  <ion-item style="background: #A4C9F6; border-radius: 10px;" >
-    
-    <ion-img width="80" height="80" src="http://fivelovelanguages-m0.s3.amazonaws.com/assets/images/language-icons/5ll_icon-affirmation.png"></ion-img>
-  </ion-item>
+<ion-content padding>
+  <h3>Reminder, your partner's love language is:</h3>
 
-  
-  
+
+  <ion-item  *ngFor="let url of love_language_chosen" style="border-radius: 10px;" >
+
+    <img src={{url}} style="max-width: 50%">
+  </ion-item>
+</ion-content>
+
 
     <ion-footer>
       <ion-toolbar>
@@ -30,5 +30,3 @@
       </div>
     </ion-toolbar>
   </ion-footer>
-
-</ion-content>

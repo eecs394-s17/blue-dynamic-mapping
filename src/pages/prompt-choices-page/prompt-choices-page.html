@@ -11,12 +11,14 @@
 <ion-content>
 
   <ion-list>
-    <ion-list-header style="background-color: #E8E8E8;"> Edit Prompts </ion-list-header>
-    <button ion-item text-wrap *ngFor="let p of prompts; let i = index" (click)="itemTapped($event, i)">
-      {{p.question_data.text}}
-    </button>
+
+      <button ion-item *ngFor="let p of prompts; let i = index" (click)="itemTapped($event, i)">
+        {{p.question_data.text}}
+      </button>
+      <button ion-item (click)="chooseLoveLanguage()">Love language</button>
+    <!-- <p>
+      <button ion-button color="primary" menuToggle>Toggle Menu</button>
+    </p> -->
   </ion-list>
 
 </ion-content>
-
-
