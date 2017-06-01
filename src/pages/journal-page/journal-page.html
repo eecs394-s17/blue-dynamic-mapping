@@ -10,7 +10,7 @@
 
 <ion-content padding>
 
-  <form [formGroup]="journalForm" (submit)="storeJournal()">
+  <form [formGroup]="journalForm" (submit)="storeJournal()" (reset)="goBack()">
 
     <ion-list margin-top>
 
@@ -25,6 +25,9 @@
       
       <button class="saveButton" ion-item text-center detail-none color="primary" type="submit">
         Save 
+      </button>
+      <button class="saveButton" ion-item text-center detail-none color="primary" type="reset">
+        Burn 
       </button>
 
     </ion-list>

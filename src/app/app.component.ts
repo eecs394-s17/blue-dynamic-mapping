@@ -66,8 +66,8 @@ export class MyApp {
     this.pages = [
       { title: 'Home', component: HomePage },
       { title: 'Journals', component: OldJournalsPage },
-      { title: 'Track Past Arguments', component: OldResponsesPage },
-      { title: 'Prompts', component: PromptChoicesPage }
+      { title: 'Past Arguments', component: OldResponsesPage },
+      { title: 'Edit Prompts', component: PromptChoicesPage }
 
     ];
   }

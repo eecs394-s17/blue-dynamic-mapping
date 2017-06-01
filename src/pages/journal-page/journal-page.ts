@@ -31,6 +31,10 @@ export class JournalPage {
     this.storageService.saveMostRecentJournalEntry(this.dateTime, this.journalForm.value.subject, this.journalForm.value.thoughts). then((res) => {
       this.navCtrl.setRoot(OldJournalsPage)
     });
-
   }
+
+   goBack(){
+     this.navCtrl.pop();
+  }
+
 }
