@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar color="primary">
+  <ion-navbar color="primary" style="box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); ">
     <ion-title>Dynamic Mapping</ion-title>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content class="prompt-content" padding>
-  <h3>Reminder, your partner's love language is:</h3>
+  <h3 class="question">Reminder, your partner's love language is:</h3>
 
 
   
@@ -18,15 +18,21 @@
 </ion-content>
 
 
-    <ion-footer>
-      <ion-toolbar>
-        <ion-buttons left>
-          <button ion-button style="font-size = 1.5em" *ngIf="can_go_back" clear ion-button (click)="backAction($event)">Back</button>
-        </ion-buttons>
-        <div>
-        <ion-buttons right>
-          <button ion-button style="font-size = 1.5em" *ngIf="can_go_next" clear ion-button (click)="nextAction($event)">{{nextText()}}</button>
-        </ion-buttons>
-      </div>
-    </ion-toolbar>
-  </ion-footer>
+<ion-footer>
+
+  <ion-toolbar color="footer">
+    <ion-buttons left> 
+      <button ion-button style="font-size = 1.5em; color: white" *ngIf="!can_go_back" clear ion-button (click)="returnHome()"> Cancel </button>
+    </ion-buttons>
+
+    <ion-buttons left>
+      <button ion-button style="font-size = 1.5em; color: white" *ngIf="can_go_back" clear ion-button (click)="backAction($event)" >Back</button>
+    </ion-buttons>
+    <div>
+    <ion-buttons right>
+      <button ion-button style="font-size = 1.5em; color: white" *ngIf="can_go_next" clear ion-button (click)="nextAction($event)" >{{nextText()}}</button>
+    </ion-buttons>
+  </div>
+ </ion-toolbar>
+</ion-footer>
+

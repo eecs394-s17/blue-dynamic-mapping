@@ -1,6 +1,19 @@
 reminder-page {
+	.toolbar-title{
+        font-family: roboto;
+        font-size: 2.2rem;
+        font-weight: 400 !important;
+    }
+
+    .question{
+        font-family: roboto;
+        font-size: 2.2rem;
+        font-weight: 400 !important;
+    }
+  
+
 	.prompt-content {
-    background-color: #ffffff
-}
+	background-color: #ffffff
+	}
 
 }
