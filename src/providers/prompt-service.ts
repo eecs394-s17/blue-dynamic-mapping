@@ -238,4 +238,44 @@ export class PromptService {
       console.log(response_key);
     return firebase.database().ref('/Users/').child(this.getUserId()).child('ResponseChoices').child(response_key).set(false);
   }
+
+  async fetAllLoveLanguage(){
+    return firebase.database().ref('/LoveLanguage').once('value').then((snapshot) => {
+      let love_language_list = Object.keys(snapshot.val());
+
+      return love_language_list;
+
+    })
+  }
+
+  async isLoveLanguageSelected(love_language){
+    return firebase.database().ref('/Users/').child(this.getUserId()).child('LoveLanguageChoices').child(love_language).once('value').then((snapshot) => {
+      // console.log("isLoveLanguageSelected function:"+snapshot.val());
+      if(snapshot.val() == false){
+        // console.log("false");
+        return false;
+      }
+      else{
+        // console.log("true");
+        return true;
+      }
+    })
+  }
+
+  async getLoveLanguageURL(love_language){
+    return firebase.database().ref('/LoveLanguage').child(love_language).once('value').then((snapshot) => {
+      // console.log(snapshot.val());
+      return snapshot.val();
+    })
+  }
+
+
+  async makeLoveLanguageActive(love_language){
+    return firebase.database().ref('/Users/').child(this.getUserId()).child('LoveLanguageChoices').child(love_language).set(true);
+  }
+
+  async makeLoveLanguageInActive(love_language){
+    console.log("set inactive!");
+    return firebase.database().ref('/Users/').child(this.getUserId()).child('LoveLanguageChoices').child(love_language).set(false);
+  }
 }

@@ -12,7 +12,7 @@
 <ion-content padding style="background-color: #fafafa">
   <h3 class="question">{{prompt.question}}</h3>
   <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
-  <button ion-button round
+  <button ion-button
     *ngFor="let r of prompt.responses"
     [outline]="!selected_responses.has(r)"
     (click)="select_ans(r)"
@@ -23,7 +23,7 @@
 
   <ion-toolbar color="footer">
     <ion-buttons left> 
-      <button ion-button style="font-size = 1.5em" *ngIf="!can_go_back" clear ion-button (click)="returnHome()"> Cancel </button>
+      <button ion-button style="font-size = 1.5em; color: white" *ngIf="!can_go_back" clear ion-button (click)="returnHome()"> Cancel </button>
     </ion-buttons>
 
     <ion-buttons left>

@@ -5,6 +5,7 @@ import { AuthData } from '../providers/auth-data';
 import { PromptsRootPage } from '../pages/prompts-root-page/prompts-root-page';
 import { PromptChoicesPage } from '../pages/prompt-choices-page/prompt-choices-page';
 import { ResponseChoicesPage } from '../pages/response-choices-page/response-choices-page';
+import { LoveLanguageChoicesPage } from '../pages/love-language-choices-page/love-language-choices-page';
 import { HomePage } from '../pages/home-page/home-page';
 import { PromptPage } from '../pages/prompt-page/prompt-page';
 import { ReminderPage } from '../pages/reminder-page/reminder-page';
@@ -58,12 +59,12 @@ export class MyApp {
         }
       });
     });
- 
+
     this.initializeApp();
 
     // set our app's pages
     this.pages = [
-      { title: 'Home', component: HomePage }, 
+      { title: 'Home', component: HomePage },
       { title: 'Journals', component: OldJournalsPage },
       { title: 'Track Past Arguments', component: OldResponsesPage },
       { title: 'Prompts', component: PromptChoicesPage }
@@ -103,7 +104,7 @@ export class MyApp {
           text: 'Log Out',
           handler: ()=> {
             this.authData.logoutUser();
-            this.menu.close(); 
+            this.menu.close();
             this.nav.setRoot(LoginPage);
           }
         }
