@@ -8,14 +8,19 @@
 </ion-header>
 
 
-<ion-content padding>
-  <h3  style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of questions_list; let i = index"> {{p}}
+<ion-content class="prompt-content" padding>
+<!--   <h3  style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of questions_list; let i = index"> {{p}}
     <br />
       <button ion-button outline 
     *ngFor="let op of responses_list[i];" align-center>{{op}}</button>
 
   </h3>
-
+ -->
+   <h3  style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of questions_list; let i = index"> {{p}}
+    <br />
+    <button ion-button outline style="min-width: 95%" 
+    *ngFor="let op of responses_list[i];" align-center>{{op}}</button>
+  </h3>
 
   <!-- <h3 style="color: white; margin-bottom: 0px; margin-top: 5px;"> My Personal Mantra: </h3> -->
 

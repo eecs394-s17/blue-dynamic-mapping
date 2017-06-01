@@ -22,13 +22,19 @@
         <ion-textarea  placeholder="What's on your mind?" #thoughts formControlName="thoughts" rows="10" type="thoughts" autosize  ></ion-textarea>
       </ion-item>
 
-      
-      <button class="saveButton" ion-item text-center detail-none color="primary" type="submit">
-        Save 
-      </button>
-      <button class="saveButton" ion-item text-center detail-none color="primary" type="reset">
-        Burn 
-      </button>
+      <ion-row> 
+        <ion-col>
+          <button class="cancelButton" ion-item text-center detail-none color="primary" type="reset">
+            Burn 
+          </button>
+        </ion-col>
+
+        <ion-col>
+          <button class="saveButton" ion-item text-center detail-none color="primary" type="submit">
+            Save 
+          </button>
+        </ion-col>
+      </ion-row>
 
     </ion-list>
   </form>
