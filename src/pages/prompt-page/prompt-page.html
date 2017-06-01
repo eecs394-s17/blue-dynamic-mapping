@@ -8,9 +8,9 @@
   </ion-navbar >
 </ion-header>
 
+<ion-content class="prompt-content" padding>
+  <h3>{{prompt.question}}</h3>
 
-<ion-content padding style="background-color: #fafafa">
-  <h3 class="question">{{prompt.question}}</h3>
   <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
   <button ion-button
     *ngFor="let r of prompt.responses"
