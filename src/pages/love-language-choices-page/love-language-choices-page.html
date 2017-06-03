@@ -15,7 +15,7 @@
   <ion-list>
 
     <ion-item *ngFor="let l of love_language_list; let i=index" >
-          <ion-label> {{l}} {{i}} </ion-label>
+          <ion-label> {{l}}</ion-label>
           <ion-toggle value="foo" *ngIf="love_language_selected[i]" checked="true" (ionChange)="subscribe(l, i)"></ion-toggle>
           <ion-toggle value="foo" *ngIf="!love_language_selected[i]" checked="false" (ionChange)="subscribe(l, i)"></ion-toggle>
     </ion-item>
