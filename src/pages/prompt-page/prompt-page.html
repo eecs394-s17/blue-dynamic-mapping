@@ -13,7 +13,7 @@
   <h3 class="question">{{prompt.question}}</h3>
 
   <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
-  <button ion-button
+  <button ion-button text-wrap
     *ngFor="let r of prompt.responses, let i = index"
     [outline]="!selected_responses.has(r)"
     (click)="select_ans(r)"
@@ -23,7 +23,7 @@
 <ion-footer>
 
   <ion-toolbar color="footer">
-    <ion-buttons left> 
+    <ion-buttons left>
       <button ion-button style="font-size = 1.5em; color: white" *ngIf="!can_go_back" clear ion-button (click)="returnHome()"> Cancel </button>
     </ion-buttons>
 
