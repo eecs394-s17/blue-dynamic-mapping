@@ -14,7 +14,7 @@
 
   <!-- <response-button *ngFor="let r of prompt.responses" [response]="r" [callback]="responseSelected" align-center ></response-button> -->
   <button ion-button
-    *ngFor="let r of prompt.responses"
+    *ngFor="let r of prompt.responses, let i = index"
     [outline]="!selected_responses.has(r)"
     (click)="select_ans(r)"
     align-center style="min-width: 100%">{{r}}</button>
