@@ -14,7 +14,7 @@
 
   <ion-list style="background-color: #E8E8E8;">
     <ion-list-header> Choose Responses </ion-list-header>
-    <ion-item *ngFor="let r of responses" >
+    <ion-item text-wrap *ngFor="let r of responses" >
           <ion-label> {{r.text}} </ion-label>
           <ion-toggle value="foo" *ngIf="r.is_active" checked="true" (ionChange)="subscribe(r)"></ion-toggle>
           <ion-toggle value="foo" *ngIf="!r.is_active" checked="false" (ionChange)="subscribe(r)"></ion-toggle>
@@ -24,5 +24,3 @@
 
 
 </ion-content>
-
-
