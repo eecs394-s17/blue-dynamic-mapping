@@ -16,9 +16,9 @@
 
   </h3>
  -->
-   <h3  style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of questions_list; let i = index"> {{p}}
+   <h3 class="question" style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of questions_list; let i = index"> {{p}}
     <br />
-    <button ion-button outline style="min-width: 95%" 
+    <button ion-button text-wrap outline style="min-width: 100%; background-color: #1976D2; color: white" 
     *ngFor="let op of responses_list[i];" align-center>{{op}}</button>
   </h3>
 

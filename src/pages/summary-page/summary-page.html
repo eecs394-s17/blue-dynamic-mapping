@@ -11,7 +11,7 @@
 <ion-content class="prompt-content" padding>
   <h3 class="question" style="color: black; margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of prompts; let i = index"> {{p.question}}
     <br />
-    <button ion-button outline style="min-width: 95%" 
+    <button text-wrap ion-button outline style="min-width: 100%; background-color: #1976D2; color: white" 
     *ngFor="let op of responses_list[i]; let j = index" align-center>{{op}}</button>
   </h3>
 
