@@ -30,5 +30,6 @@ www/
 $RECYCLE.BIN/
 
 .DS_Store
+APP_SECRETS.JS
 Thumbs.db
 UserInterfaceState.xcuserstate
