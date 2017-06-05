@@ -63,7 +63,6 @@ Get an invite to the project from the database administrator.
 
 ## Known bugs
 
-When you navigate into the "Track Argument" feature, then hit the back button, it takes you to a blank "Home Page"
 
 ## Structure of the project
 
