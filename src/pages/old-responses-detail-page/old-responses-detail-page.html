@@ -23,7 +23,7 @@
   </h3> -->
     <h3 class="question" style="color: black; margin-bottom: 0px; margin-top: 5px;" *ngFor="let q of questions;"> {{q}}
     <br />
-    <button ion-button style="min-width: 95%" 
+    <button text-wrap ion-button style="min-width: 100%" 
     *ngFor="let choice of responses[q];" align-center>{{choice}}</button>
   </h3>
 

@@ -44,13 +44,13 @@ export class OldResponsesPage {
   }
 
   expandEntry(t){
-    let loader = this.loadingCtrl.create({
-      content: "Please wait...",
-    });
+    // let loader = this.loadingCtrl.create({
+    //   content: "Please wait...",
+    // });
 
-    loader.present();
+    // loader.present();
     this.promptService.fetchOldResponse(t).then((response) => {
-      loader.dismiss();
+      // loader.dismiss();
       this.navCtrl.push(OldResponsesDetailPage, {
         time_stamp: t,
         response: response
