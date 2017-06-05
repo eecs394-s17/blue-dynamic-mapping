@@ -15,6 +15,9 @@ import { PromptService } from '../../providers/prompt-service'
 export class PromptPage {
 	prompt: Prompt;
 	selected_responses: Set<string>;
+	current: any;
+	headings: any;
+	newResponses: any;
 	can_go_back: boolean;
 	can_go_next: boolean;
 	first: boolean;
@@ -28,9 +31,25 @@ export class PromptPage {
   		this.prompt = navParams.get('prompt');
   		this.first = navParams.get('first');
   		this.last = navParams.get('last');
+			this.current = navParams.get('current');
   		this.can_go_back = !this.first;
   		this.can_go_next = true;
       this.time_stamp = navParams.get('time_stamp');
+			this.headings = new Array<String>();
+			this.newResponses = new Array<String>();
+
+			if(this.current == 4){
+				for (let i of this.prompt.responses){
+					this.headings.push( i.substring(0, i.indexOf(':')).toUpperCase());	
+					this.newResponses.push( i.substring(i.indexOf(':')));
+				}
+
+					// i =  i.substring(i.indexOf(':') + 1)
+					// console.log(i);
+					// console.log(this.prompt.responses)
+				
+			}
+
   	}
 
   	ionViewWillEnter() {

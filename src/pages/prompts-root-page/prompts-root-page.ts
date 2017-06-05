@@ -47,6 +47,7 @@ export class PromptsRootPage {
       first: this.current_prompt_index == 0,
       last: this.current_prompt_index == this.prompts.length-1,
       time_stamp: this.time_stamp,
+      current: this.current_prompt_index,
       callback: this.promptCallback
     });
   }
@@ -57,6 +58,7 @@ export class PromptsRootPage {
       first: this.current_prompt_index == 0,
       last: this.current_prompt_index == this.prompts.length-1,
       time_stamp: this.time_stamp,
+      current: this.current_prompt_index,
       callback: this.promptCallback
     });
   }
