@@ -14,7 +14,11 @@ import { HomePage } from '../home-page/home-page';
 
 export class OldResponsesDetailPage {
   time_stamp: any;
+  // response: any;
   prompts: Prompt[];
+  questions: string[];
+  responses: any;
+
   responses_list: string[];
   questions_list: string[];
 
@@ -30,29 +34,42 @@ export class OldResponsesDetailPage {
     // }
     this.responses_list = [];
     this.time_stamp = navParams.get('time_stamp');
-    console.log("detail time_stamp: "+this.time_stamp);
+    this.questions = [];
+    this.responses = {};
+
+    let response = navParams.get('response');
+    for (var q in response) {
+      this.questions.push(q);
+      this.responses[q] = response[q];
+    }
+
+    console.log(this.questions);
+    console.log(this.responses);
+
+    // console.log("detail time_stamp: "+this.time_stamp);
     this.load();
     // console.log("responses_list[0]"+this.responses_list);
     // console.log("detail responses_list:"+this.responses_list);
   }
 
   load() {
-    this.promptService.fetchOldQuestions(this.time_stamp).then((questions) => {
-      this.questions_list = questions;
-      console.log("questions_list: "+this.questions_list);
-      for(var i=0; i<this.questions_list.length; i++){
-        this.promptService.fetchOldResponses(this.time_stamp, this.questions_list[i]).then((responses) => {
-          this.responses_list.push(responses);
-          // console.log("detail responses_list "+i+": "+this.responses_list[i]);
+    // this.promptService.fetchOldQuestions(this.time_stamp).then((questions) => {
+    //   this.questions_list = questions;
+    //   console.log("questions_list: "+this.questions_list);
+    //   for(var i=0; i<this.questions_list.length; i++){
+    //     this.promptService.fetchOldResponses(this.time_stamp, this.questions_list[i]).then((responses) => {
+    //       console.log(responses);
+    //       this.responses_list.push(responses);
+    //       // console.log("detail responses_list "+i+": "+this.responses_list[i]);
 
-          console.log("detail responses_list "+0+": "+this.responses_list[0]);
-          console.log("detail responses_list "+1+": "+this.responses_list[1]);
-          console.log("detail responses_list "+2+": "+this.responses_list[2]);
-          console.log("detail responses_list "+3+": "+this.responses_list[3]);
-          console.log("detail responses_list "+4+": "+this.responses_list[4]);
-        })
-      }
-    })
+    //       console.log("detail responses_list "+0+": "+this.responses_list[0]);
+    //       console.log("detail responses_list "+1+": "+this.responses_list[1]);
+    //       console.log("detail responses_list "+2+": "+this.responses_list[2]);
+    //       console.log("detail responses_list "+3+": "+this.responses_list[3]);
+    //       console.log("detail responses_list "+4+": "+this.responses_list[4]);
+    //     })
+    //   }
+    // })
   }
 
 
