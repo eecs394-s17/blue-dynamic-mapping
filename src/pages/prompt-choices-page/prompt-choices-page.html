@@ -12,7 +12,7 @@
 
   <ion-list>
 
-      <button ion-item *ngFor="let p of prompts; let i = index" (click)="itemTapped($event, i)">
+      <button ion-item text-wrap *ngFor="let p of prompts; let i = index" (click)="itemTapped($event, i)">
         {{p.question_data.text}}
       </button>
       <button ion-item (click)="chooseLoveLanguage()">My Partner's Love language</button>
