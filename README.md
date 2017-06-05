@@ -63,6 +63,7 @@ Get an invite to the project from the database administrator.
 
 ## Known bugs
 
+The question cannot contain a full stop ".", or there will be error when recording the arguments to firebase.
 
 ## Structure of the project
 
