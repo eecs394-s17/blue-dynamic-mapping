@@ -19,13 +19,14 @@ export class ResponseChoicesPage {
   prompts: Prompt[];
   responses: any;
   callback: (boolean) => void;
-  //current_prompt_index: number;
-  //time_stamp: any;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private promptService: PromptService, private storageService: StorageService) {
     this.responses = this.navParams.get('responses');
     this.callback = navParams.get('callback');
     this.load();
+
+
 
     //this.time_stamp = Math.floor(Date.now());
     //console.log("root time:" + this.time_stamp);

@@ -47,7 +47,8 @@ export class PromptChoicesPage {
     //let view = this.navCtrl.getActive().component.name;
   	this.navCtrl.push(ResponseChoicesPage, {
   		responses: this.prompts[item].response_data,
-      callback: this.promptCallback});
+      callback: this.promptCallback,
+      current: item});
   }
 
   displayNextPrompt() {
