@@ -11,19 +11,19 @@
 <ion-content class="prompt-content" padding>
 <!--   <h3  style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let p of questions_list; let i = index"> {{p}}
     <br />
-      <button ion-button outline 
+      <button ion-button outline
     *ngFor="let op of responses_list[i];" align-center>{{op}}</button>
 
   </h3>
  -->
   <!--  <h3  style="margin-bottom: 0px; margin-top: 5px;" *ngFor="let q in questions;"> {{q}}
     <br />
-    <h1 ion-button outline style="min-width: 95%" 
+    <h1 ion-button outline style="min-width: 95%"
     *ngFor="let response of responses[q];" align-center>{{op}}</h1>
   </h3> -->
-    <h3 class="question" style="color: black; margin-bottom: 0px; margin-top: 5px;" *ngFor="let q of questions;"> {{q}}
+    <h3 class="question" style="color: black; margin-bottom: 0px; margin-top: 5px;" *ngFor="let q of questions;"> {{q.replace("fullstophere", ".")}}
     <br />
-    <button text-wrap ion-button style="min-width: 100%" 
+    <button text-wrap ion-button style="min-width: 100%"
     *ngFor="let choice of responses[q];" align-center>{{choice}}</button>
   </h3>
 

@@ -78,6 +78,14 @@ export class PromptService {
 
 
   recordResponse(time_stamp, question, response){
+    var index = question.indexOf(".");
+    // question contains "."
+    if(index != -1){
+      // console.log("question contains '.' ");
+      // change "." to "fullstophere" to avoid error when storing to firebase
+      question = question.replace(".", "fullstophere");
+      // console.log("change . to fullstophere: "+question);
+    }
 
     var database = firebase.database();
     this.getUserTimeStamps().then((time_stamps)=>{

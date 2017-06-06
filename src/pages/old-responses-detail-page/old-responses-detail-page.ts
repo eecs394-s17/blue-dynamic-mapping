@@ -39,12 +39,20 @@ export class OldResponsesDetailPage {
 
     let response = navParams.get('response');
     for (var q in response) {
+      // change "fullstophere" back to "."
+      // if(q.indexOf("fullstophere") != -1){
+      //   this.questions.push(q.replace("fullstophere", "."));
+      // }
+      // // console.log("q: "+q);
+      // else{
       this.questions.push(q);
+      // }
       this.responses[q] = response[q];
+      console.log(q+": "+ this.responses[q]);
     }
 
-    console.log(this.questions);
-    console.log(this.responses);
+    // console.log(this.questions);
+
 
     // console.log("detail time_stamp: "+this.time_stamp);
     this.load();
