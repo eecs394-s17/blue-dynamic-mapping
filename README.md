@@ -49,9 +49,7 @@ Create an account at [Firebase](https://firebase.google.com/).
 
 Get an invite to the project from the database administrator.
 
-## Changing prompts and answers in Firebase
-
---------------
+Ask database administrator for scripts if you want to change prompts and answers in Firebase.
 
 ## Putting the app on Play store and App Store
 
@@ -63,7 +61,7 @@ Get an invite to the project from the database administrator.
 
 ## Known bugs
 
-
+In home page, you cannot slide left unless you go to the top of screen.
 
 ## Structure of the project
 
